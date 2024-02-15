@@ -80,6 +80,11 @@ void CustomerMain::readMSG()
         {
             login->ResultNICK(msg.split('@')[2]);
         }
+        //아이디 찾기 결과
+        else if(ck=="SID")
+        {
+            login->ResultSID(msg.split('@')[2]);
+        }
 
     }
 }

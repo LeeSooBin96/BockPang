@@ -199,6 +199,31 @@ void LoginPage::JoinProgress()
         }
     }
 }
+//=================================================================================================================회원가입 부분 완료
+//서버에 아이디 찾기 요청
+void LoginPage::RequestSID()
+{
+    if(!ui->NAME_FindIDEdit->text().isEmpty()&&!ui->PHONE_FindIDEdit->text().isEmpty())
+    {
+        QByteArray msg=myCode.toUtf8()+"^SID^"+ui->NAME_FindIDEdit->text().toUtf8()+"^"+ui->PHONE_FindIDEdit->text().toUtf8();
+        emit signal_sendMSG(msg);
+    }
+}
+//아이디 찾기 결과
+void LoginPage::ResultSID(QString id)
+{
+    if(id=="F")
+    {
+        ui->lbl_SID->setText("존재하지 않는 계정 정보");
+        ui->NAME_FindIDEdit->clear();
+        ui->PHONE_FindIDEdit->clear();
+    }
+    else
+    {
+        ui->lbl_noticID->show();
+        ui->lbl_SID->setText(id);
+    }
+}
 
 //로그인 화면으로
 void LoginPage::gotoLogin()
@@ -221,6 +246,15 @@ void LoginPage::gotoJoin()
     ui->Btn_confirmID->setEnabled(false);
     ui->Btn_confirmPHONE->setEnabled(false);
     ui->Btn_confirmNICKNAME->setEnabled(false);
+}
+//아이디 찾기 화면으로
+void LoginPage::gotoSID()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+    ui->NAME_FindIDEdit->clear();
+    ui->PHONE_FindIDEdit->clear();
+    ui->lbl_SID->clear();
+    ui->lbl_noticID->hide();
 }
 
 
