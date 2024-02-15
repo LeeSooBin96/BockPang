@@ -10,7 +10,7 @@ CustomerMain::CustomerMain(QWidget *parent)
     ui->setupUi(this);
 
     //초기 세팅
-    connectServer(); //서버와 연결
+    // connectServer(); //서버와 연결
     myNum="1"; //임시
 
 }
@@ -36,7 +36,7 @@ void CustomerMain::connectServer()
 //서버로 메시지 송신
 void CustomerMain::sendServerMSG(QByteArray msg)
 {
-    tcpSocket->write(msg);
+    // tcpSocket->write(msg);
     qDebug()<<"서버로 전송된 메시지 "<<msg;
 }
 //서버로부터 메시지 수신
@@ -60,6 +60,7 @@ void CustomerMain::readMSG()
         if(ck=="LS")
         {
             //메인 화면으로
+
         }
         else if(ck=="LF")
         {

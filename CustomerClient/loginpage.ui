@@ -55,7 +55,7 @@ border-image: url(:/Image/Join.png);</string>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QPushButton" name="Btn_FindPW">
@@ -819,7 +819,7 @@ border-radius:10px;
         </rect>
        </property>
        <property name="placeholderText">
-        <string>  닉네임 입력</string>
+        <string>  전화번호 입력</string>
        </property>
       </widget>
       <widget class="QLabel" name="lb_FindPW_PHONE">

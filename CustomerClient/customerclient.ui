@@ -532,12 +532,6 @@ border-image: url(:/Image/Join.png);</string>
        <height>40</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
-border-radius:10px;
-</string>
-     </property>
      <property name="text">
       <string>ID 찾기</string>
      </property>
@@ -563,12 +557,6 @@ border-radius:10px;
        <width>60</width>
        <height>40</height>
       </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
-border-radius:10px;
-</string>
      </property>
      <property name="text">
       <string>이전</string>
@@ -794,10 +782,10 @@ border-image: url(:/Image/Join.png);</string>
     <widget class="QLabel" name="lb_Address">
      <property name="geometry">
       <rect>
-       <x>5</x>
-       <y>5</y>
-       <width>151</width>
-       <height>41</height>
+       <x>0</x>
+       <y>0</y>
+       <width>121</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -806,11 +794,8 @@ border-image: url(:/Image/Join.png);</string>
        <bold>true</bold>
       </font>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/Image/Address.png);</string>
-     </property>
      <property name="text">
-      <string/>
+      <string>광주인력개발원</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Btn_Alarm">
@@ -823,20 +808,7 @@ border-image: url(:/Image/Join.png);</string>
       </rect>
      </property>
      <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="Resource.qrc">
-       <normaloff>:/Image/Alarm.png</normaloff>:/Image/Alarm.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
+      <string>알림</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Btn_Bascket">
@@ -849,28 +821,15 @@ border-image: url(:/Image/Join.png);</string>
       </rect>
      </property>
      <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>Image/Baskcet_2.png</normaloff>Image/Baskcet_2.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
+      <string>장바구니</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="Search_Edit">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>0</x>
        <y>55</y>
-       <width>351</width>
+       <width>370</width>
        <height>40</height>
       </rect>
      </property>
@@ -1124,43 +1083,6 @@ border-image: url(:/Image/Join.png);</string>
       <string>가게 이름 및 정보</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>371</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(42, 193, 188);
-border-radius:10px;
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <zorder>label</zorder>
-    <zorder>lb_Address</zorder>
-    <zorder>Btn_Alarm</zorder>
-    <zorder>Btn_Bascket</zorder>
-    <zorder>Search_Edit</zorder>
-    <zorder>Btn_Pizza</zorder>
-    <zorder>Btn_Chicken</zorder>
-    <zorder>Btn_Burger</zorder>
-    <zorder>Btn_Meat</zorder>
-    <zorder>Btn_Marcket1</zorder>
-    <zorder>Btn_Marcket2</zorder>
-    <zorder>Btn_Heart</zorder>
-    <zorder>Btn_Profile</zorder>
-    <zorder>Btn_Inquire</zorder>
-    <zorder>Btn_List</zorder>
-    <zorder>lb_Photo_Marcket1</zorder>
-    <zorder>lb_Photo_Marcket2</zorder>
-    <zorder>lb_Marcket_Info2</zorder>
-    <zorder>lb_Marcket_Info1</zorder>
    </widget>
    <widget class="QWidget" name="page_8">
     <widget class="QPushButton" name="Btn_Marcket_Back">
@@ -1173,20 +1095,7 @@ border-radius:10px;
       </rect>
      </property>
      <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="Resource.qrc">
-       <normaloff>:/Image/Back_2.png</normaloff>:/Image/Back_2.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
+      <string>back</string>
      </property>
     </widget>
     <widget class="QLabel" name="lb_Image_Logo">
@@ -1198,11 +1107,8 @@ border-radius:10px;
        <height>50</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/Image/delivery.png);</string>
-     </property>
      <property name="text">
-      <string/>
+      <string>로고</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -1218,20 +1124,7 @@ border-radius:10px;
       </rect>
      </property>
      <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="Resource.qrc">
-       <normaloff>:/Image/HOME.png</normaloff>:/Image/HOME.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
+      <string>홈</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Btn_Marcket_Bascket">
@@ -1244,20 +1137,7 @@ border-radius:10px;
       </rect>
      </property>
      <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="Resource.qrc">
-       <normaloff>:/Image/Baskcet.png</normaloff>:/Image/Baskcet.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>50</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
+      <string>장바구니</string>
      </property>
     </widget>
     <widget class="QLabel" name="lb_Categoryname">

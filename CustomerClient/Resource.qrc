@@ -65,12 +65,5 @@
         <file>resources/18_board.png</file>
         <file>resources/19_board.png</file>
         <file>resources/20_board.png</file>
-        <file>Image/Baskcet.png</file>
-        <file>Image/HOME.png</file>
-        <file>Image/Alarm.png</file>
-        <file>Image/Baskcet_2.png</file>
-        <file>Image/Back_2.png</file>
-        <file>Image/delivery.png</file>
-        <file>Image/Address.png</file>
     </qresource>
 </RCC>
