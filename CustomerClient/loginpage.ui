@@ -55,7 +55,7 @@ border-image: url(:/Image/Join.png);</string>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QPushButton" name="Btn_FindPW">
@@ -744,6 +744,199 @@ border-radius:10px;
        </layout>
       </widget>
      </widget>
+     <widget class="QWidget" name="page_4">
+      <widget class="QLineEdit" name="NAME_FindPWEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>70</y>
+         <width>190</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>  이름 입력</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_FindPW_NICKNAME">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>70</y>
+         <width>70</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>이름</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="ID_FindPWEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>10</y>
+         <width>190</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>  아이디 입력</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_FindPW_ID">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>10</y>
+         <width>70</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="PHONE_FindPWEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>130</y>
+         <width>190</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>  닉네임 입력</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lb_FindPW_PHONE">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>130</y>
+         <width>70</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>전화번호</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Btn_FindPWBack">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>350</y>
+         <width>60</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(42, 193, 188);
+border-radius:10px;
+</string>
+       </property>
+       <property name="text">
+        <string>이전</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Btn_confirmFindPW">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>350</y>
+         <width>260</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(42, 193, 188);
+border-radius:10px;
+</string>
+       </property>
+       <property name="text">
+        <string>PW 찾기</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>190</y>
+         <width>261</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="lbl_noticPW">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>찾은 비밀번호</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lbl_SPW">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(42, 193, 188);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
    </item>
   </layout>
@@ -1108,6 +1301,102 @@ border-radius:10px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Btn_FindPWBack</sender>
+   <signal>clicked()</signal>
+   <receiver>LoginPage</receiver>
+   <slot>gotoLogin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>562</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-51</x>
+     <y>551</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_FindPW</sender>
+   <signal>clicked()</signal>
+   <receiver>LoginPage</receiver>
+   <slot>gotoSPW()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>534</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>737</x>
+     <y>540</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ID_FindPWEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>NAME_FindPWEdit</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>222</x>
+     <y>233</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>222</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>NAME_FindPWEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>PHONE_FindPWEdit</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>329</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PHONE_FindPWEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>Btn_confirmFindPW</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_confirmFindPW</sender>
+   <signal>clicked()</signal>
+   <receiver>LoginPage</receiver>
+   <slot>RequestSPW()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>502</x>
+     <y>565</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>LoginProgress()</slot>
@@ -1121,5 +1410,7 @@ border-radius:10px;
   <slot>JoinProgress()</slot>
   <slot>gotoSID()</slot>
   <slot>RequestSID()</slot>
+  <slot>gotoSPW()</slot>
+  <slot>RequestSPW()</slot>
  </slots>
 </ui>

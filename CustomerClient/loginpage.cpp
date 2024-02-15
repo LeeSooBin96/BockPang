@@ -224,6 +224,31 @@ void LoginPage::ResultSID(QString id)
         ui->lbl_SID->setText(id);
     }
 }
+//서버에 비밀번호 찾기 요청
+void LoginPage::RequestSPW()
+{
+    if(!ui->ID_FindPWEdit->text().isEmpty()&&!ui->NAME_FindPWEdit->text().isEmpty()&&!ui->PHONE_FindPWEdit->text().isEmpty())
+    {
+        QByteArray msg=myCode.toUtf8()+"^SPW^"+ui->ID_FindPWEdit->text().toUtf8()+"^"+ui->NAME_FindPWEdit->text().toUtf8()+"^"+ui->PHONE_FindPWEdit->text().toUtf8();
+        emit signal_sendMSG(msg);
+    }
+}
+//비밀번호 찾기 결과
+void LoginPage::ResultSPW(QString pw)
+{
+    if(pw=="F")
+    {
+        ui->lbl_SPW->setText("존재하지 않는 계정 정보");
+        ui->ID_FindPWEdit->clear();
+        ui->NAME_FindPWEdit->clear();
+        ui->PHONE_FindPWEdit->clear();
+    }
+    else
+    {
+        ui->lbl_noticPW->show();
+        ui->lbl_SPW->setText(pw);
+    }
+}
 
 //로그인 화면으로
 void LoginPage::gotoLogin()
@@ -255,6 +280,16 @@ void LoginPage::gotoSID()
     ui->PHONE_FindIDEdit->clear();
     ui->lbl_SID->clear();
     ui->lbl_noticID->hide();
+}
+//비밀번호 찾기 화면으로
+void LoginPage::gotoSPW()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->ID_FindPWEdit->clear();
+    ui->NAME_FindPWEdit->clear();
+    ui->PHONE_FindPWEdit->clear();
+    ui->lbl_noticPW->hide();
+    ui->lbl_SPW->clear();
 }
 
 

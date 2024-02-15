@@ -20,6 +20,7 @@ public:
     void ResultJPH(QString); //휴대폰 중복검사 결과 처리
     void ResultNICK(QString); //닉네임 중복검사 결과 처리
     void ResultSID(QString); //아이디 찾기 결과
+    void ResultSPW(QString); //비밀번호 찾기 결과
 
 
 signals:
@@ -47,11 +48,13 @@ private slots:
     void SendNICK(); //서버에 닉네임 중복검사 요청
     void JoinProgress(); //회원가입 진행
     void RequestSID(); //서버에 아이디 찾기 요청
+    void RequestSPW(); //서버에 비밀번호 찾기 요청
 
     //화면이동 슬롯
     void gotoLogin(); //로그인 화면으로
     void gotoJoin(); //회원가입 화면으로
     void gotoSID(); //아이디 찾기 화면으로
+    void gotoSPW(); //비밀번호 찾기 화면으로
 
 
 };

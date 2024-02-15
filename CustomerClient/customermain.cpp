@@ -85,6 +85,11 @@ void CustomerMain::readMSG()
         {
             login->ResultSID(msg.split('@')[2]);
         }
+        //비밀번호 찾기 결과
+        else if(ck=="SPW")
+        {
+            login->ResultSPW(msg.split('@')[2]);
+        }
 
     }
 }
