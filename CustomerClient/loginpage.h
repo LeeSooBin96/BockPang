@@ -17,6 +17,8 @@ public:
 
     //메인에서 접근하는 함수
     void ResultJID(QString); //아이디 중복검사 결과 처리
+    void ResultJPH(QString); //휴대폰 중복검사 결과 처리
+    void ResultNICK(QString); //닉네임 중복검사 결과 처리
 
 
 signals:
@@ -30,6 +32,10 @@ private:
     bool ckID=false;
     bool ckPHONE=false;
     bool ckNICK=false;
+    //회원가입 인증 정보 저장
+    QString ATid;
+    QString ATphone;
+    QString ATnick;
 
 private slots:
     void LoginProgress(); //로그인 진행
@@ -37,6 +43,8 @@ private slots:
     void SendJoinID(); //서버에 입력된 아이디 전송해 중복검사 요청
     void CheckPW(const QString &arg1); //비밀번호 검사(회원가입)
     void CheckPHONE(); //휴대폰번호 검사(회원가입)
+    void SendNICK(); //서버에 닉네임 중복검사 요청
+    void JoinProgress(); //회원가입 진행
 
     //화면이동 슬롯
     void gotoLogin(); //로그인 화면으로
