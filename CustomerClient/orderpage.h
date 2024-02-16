@@ -22,6 +22,7 @@ public:
     void PrintSelectedCate(QStringList); //카테고리에 해당하는 목록 출력
     void PrintMarcketBase(QStringList); //가게 정보 출력
     void PrintMenuList(QStringList); //메뉴 리스트 출력
+    void PringMarcketInfo(QStringList); //매장 상세정보 출력
 
 signals:
     void signal_sendMSG(QByteArray);
@@ -39,11 +40,12 @@ private slots:
     void SendCateNum(); //서버에 카테고리 번호 전송
     void SendMarcketNum(const QModelIndex &index); //서버에 가게 번호 전송
     void SendMenuCateNum(int index); //서버에 메뉴카테고리 번호 전송
+    void SendMenuNum(QListWidgetItem *item); //서버에 선택된 메뉴 번호 전송
+    void SendMarcketNumforDetail(int index); //서버에 가게 상세 정보 요청
 
     //화면 이동
     void gotoHome(); //홈화면으로 이동
     void gotoExPage(); //이전 화면으로 이동
-
 
 };
 

@@ -12,7 +12,15 @@ CustomerMain::CustomerMain(QWidget *parent)
     //초기 세팅
     connectServer(); //서버와 연결
 
+    //확인용----------------------------------------------------------------나중에 꼭 지워
+    myNum="1"; //임시
 
+    order = new OrderPage(this,&myNum);
+    ui->mainStack->addWidget(order);
+    ui->mainStack->setCurrentWidget(order);
+
+    connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
+    //-----------------------------------------------------------------------
 }
 
 CustomerMain::~CustomerMain()
@@ -57,15 +65,7 @@ void CustomerMain::readMSG()
         myNum=msg; //부여받은 번호 저장
         qDebug()<<"부여받은 번호:"<<myNum;
 
-        //확인용----------------------------------------------------------------나중에 꼭 지워
-        // myNum="1"; //임시
 
-        order = new OrderPage(this,&myNum);
-        ui->mainStack->addWidget(order);
-        ui->mainStack->setCurrentWidget(order);
-
-        connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
-        //-----------------------------------------------------------------------
     }
     else if(msg.split('@')[0]=="S") //검색 결과 수신
     {
@@ -82,6 +82,10 @@ void CustomerMain::readMSG()
     else if(msg.split('@')[0]=="MC") //메뉴 정보 수신
     {
         order->PrintMenuList(msg.split('@'));
+    }
+    else if(msg.split('@')[0]=="MD") //매장 상세 정보 수신
+    {
+        order->PringMarcketInfo(msg.split('@'));
     }
     else if(msg.split('@')[0]=="U") //로그인 관련 수신 메시지
     {

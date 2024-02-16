@@ -6,24 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>372</width>
-    <height>668</height>
+    <width>375</width>
+    <height>665</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>372</width>
-    <height>668</height>
+    <width>375</width>
+    <height>665</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>372</width>
-    <height>668</height>
+    <width>375</width>
+    <height>665</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <property name="leftMargin">
@@ -41,7 +44,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QPushButton" name="Btn_Burger_3">
@@ -167,7 +170,7 @@
         <rect>
          <x>0</x>
          <y>330</y>
-         <width>370</width>
+         <width>375</width>
          <height>121</height>
         </rect>
        </property>
@@ -218,7 +221,7 @@
         <rect>
          <x>0</x>
          <y>330</y>
-         <width>371</width>
+         <width>375</width>
          <height>121</height>
         </rect>
        </property>
@@ -251,7 +254,8 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Address.png);</string>
+        <string notr="true">border-image: url(:/Image/Address.png);
+background-color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string/>
@@ -270,7 +274,8 @@
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/search.png);</string>
+        <string notr="true">border-image: url(:/Image/search.png);
+background-color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string/>
@@ -335,7 +340,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>370</width>
+         <width>375</width>
          <height>110</height>
         </rect>
        </property>
@@ -382,7 +387,7 @@ border-radius:10px;
         <rect>
          <x>0</x>
          <y>210</y>
-         <width>371</width>
+         <width>375</width>
          <height>121</height>
         </rect>
        </property>
@@ -433,7 +438,7 @@ border-radius:10px;
         <rect>
          <x>0</x>
          <y>210</y>
-         <width>370</width>
+         <width>375</width>
          <height>121</height>
         </rect>
        </property>
@@ -460,7 +465,8 @@ border-radius:10px;
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Baskcet_2.png);</string>
+        <string notr="true">border-image: url(:/Image/Baskcet_2.png);
+background-color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string/>
@@ -506,7 +512,8 @@ border-radius:10px;
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/HOME.png);</string>
+        <string notr="true">border-image: url(:/Image/HOME.png);
+background-color: rgb(153, 153, 153);</string>
        </property>
        <property name="text">
         <string/>
@@ -531,7 +538,8 @@ border-radius:10px;
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Baskcet.png);</string>
+        <string notr="true">border-image: url(:/Image/Baskcet.png);
+background-color: rgb(153, 153, 153);</string>
        </property>
        <property name="text">
         <string/>
@@ -551,7 +559,7 @@ border-radius:10px;
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>370</width>
+         <width>375</width>
          <height>110</height>
         </rect>
        </property>
@@ -577,7 +585,8 @@ border-radius:10px;
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/search.png);</string>
+        <string notr="true">border-image: url(:/Image/search.png);
+background-color: rgb(153, 153, 153);</string>
        </property>
        <property name="text">
         <string/>
@@ -610,7 +619,7 @@ border-radius:10px;
         <rect>
          <x>0</x>
          <y>110</y>
-         <width>371</width>
+         <width>375</width>
          <height>561</height>
         </rect>
        </property>
@@ -634,7 +643,8 @@ border-radius:10px;
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
+        <string notr="true">border-image: url(:/Image/Back_2.png);
+background-color: rgb(153, 153, 153);</string>
        </property>
        <property name="text">
         <string/>
@@ -782,7 +792,7 @@ border-radius:10px;
         <rect>
          <x>0</x>
          <y>110</y>
-         <width>371</width>
+         <width>375</width>
          <height>561</height>
         </rect>
        </property>
@@ -980,7 +990,7 @@ border-radius:10px;
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -1009,8 +1019,8 @@ border-radius:10px;
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>375</width>
-                 <height>460</height>
+                 <width>373</width>
+                 <height>461</height>
                 </rect>
                </property>
                <attribute name="label">
@@ -1046,6 +1056,302 @@ border-radius:10px;
            <attribute name="title">
             <string>가게정보</string>
            </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scrollArea">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>371</width>
+                 <height>489</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string>매장소개</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblItroduce">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_7">
+                  <property name="text">
+                   <string>가게정보</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <item>
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>영업시간: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblOTime_2">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <item>
+                   <widget class="QLabel" name="label_10">
+                    <property name="text">
+                     <string>전화번호: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblTel">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_12">
+                    <property name="text">
+                     <string>(자체제공번호)</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="Line" name="line_4">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_11">
+                  <property name="text">
+                   <string>배달정보</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <item>
+                   <widget class="QLabel" name="label_13">
+                    <property name="text">
+                     <string>최소주문금액: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblMinOrder_2">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <item>
+                   <widget class="QLabel" name="label_14">
+                    <property name="text">
+                     <string>배달팁: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblDTip_2">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_9">
+                  <item>
+                   <widget class="QLabel" name="label_15">
+                    <property name="text">
+                     <string>결제수단: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblPayWay">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="Line" name="line_6">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>사업자정보</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_7">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                  <item>
+                   <widget class="QLabel" name="label_16">
+                    <property name="text">
+                     <string>대표자명: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblCEO">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                  <item>
+                   <widget class="QLabel" name="label_17">
+                    <property name="text">
+                     <string>상호명: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblBrand">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_12">
+                  <item>
+                   <widget class="QLabel" name="label_18">
+                    <property name="text">
+                     <string>사업자등록번호: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblCnum">
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="Line" name="line_8">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_19">
+                  <property name="text">
+                   <string>원산지 정보</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="Line" name="line_9">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblOrigin">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -1832,6 +2138,22 @@ border-radius:10px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tabWidget</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>OrderPage</receiver>
+   <slot>SendMarcketNumforDetail(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>194</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>523</x>
+     <y>175</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SendSearchKey()</slot>
@@ -1840,5 +2162,6 @@ border-radius:10px;
   <slot>SendMarcketNum(QModelIndex)</slot>
   <slot>gotoExPage()</slot>
   <slot>SendMenuCateNum(int)</slot>
+  <slot>SendMarcketNumforDetail(int)</slot>
  </slots>
 </ui>

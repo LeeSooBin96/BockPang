@@ -28,17 +28,22 @@
   <widget class="QLabel" name="lb_Logo">
    <property name="geometry">
     <rect>
-     <x>9</x>
+     <x>59</x>
      <y>49</y>
-     <width>361</width>
+     <width>261</width>
      <height>141</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/Image/Join.png);</string>
+    <string notr="true">
+border-image: url(:/Image/bok_logo.png);
+</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -66,12 +71,14 @@
        <height>40</height>
       </rect>
      </property>
-     <property name="text">
-      <string/>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
      </property>
-     <property name="icon">
-      <iconset resource="Resource.qrc">
-       <normaloff>:/Image/Find_PW.png</normaloff>:/Image/Find_PW.png</iconset>
+     <property name="text">
+      <string>비밀번호 찾기</string>
      </property>
      <property name="iconSize">
       <size>
@@ -153,7 +160,7 @@
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -192,12 +199,14 @@ border-radius:10px;
        <height>40</height>
       </rect>
      </property>
-     <property name="text">
-      <string/>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
      </property>
-     <property name="icon">
-      <iconset resource="Resource.qrc">
-       <normaloff>:/Image/Find_ID.png</normaloff>:/Image/Find_ID.png</iconset>
+     <property name="text">
+      <string>아이디 찾기</string>
      </property>
      <property name="iconSize">
       <size>
@@ -225,7 +234,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -319,7 +328,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -394,7 +403,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -472,7 +481,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -500,7 +509,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -519,7 +528,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -587,7 +596,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -678,7 +687,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -730,7 +739,7 @@ border-radius:10px;
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(42, 193, 188);</string>
+         <string notr="true">color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string/>
@@ -856,7 +865,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -880,7 +889,7 @@ border-radius:10px;
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(42, 193, 188);
+background-color: rgb(0, 0, 0);
 border-radius:10px;
 </string>
      </property>
@@ -923,7 +932,7 @@ border-radius:10px;
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(42, 193, 188);</string>
+         <string notr="true">color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string/>
@@ -958,9 +967,7 @@ border-radius:10px;
   <tabstop>Btn_confirmJoin</tabstop>
   <tabstop>Btn_JoinBack</tabstop>
  </tabstops>
- <resources>
-  <include location="Resource.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>ID_Edit</sender>

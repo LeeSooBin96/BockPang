@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -38,43 +41,55 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="page">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <property name="leftMargin">
-        <number>0</number>
+      <widget class="QPushButton" name="Btn_first">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>375</width>
+         <height>665</height>
+        </rect>
        </property>
-       <property name="topMargin">
-        <number>0</number>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
-       <property name="rightMargin">
-        <number>0</number>
+       <property name="text">
+        <string/>
        </property>
-       <property name="bottomMargin">
-        <number>0</number>
+       <property name="icon">
+        <iconset resource="Resource.qrc">
+         <normaloff>:/Image/first.png</normaloff>:/Image/first.png</iconset>
        </property>
-       <item>
-        <widget class="QPushButton" name="Btn_first">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="Resource.qrc">
-           <normaloff>:/Image/first.png</normaloff>:/Image/first.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>375</width>
-           <height>665</height>
-          </size>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       <property name="iconSize">
+        <size>
+         <width>375</width>
+         <height>665</height>
+        </size>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>77</x>
+         <y>110</y>
+         <width>221</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Image/bok_logo.png);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>
