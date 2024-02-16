@@ -1,4 +1,4 @@
-#ifndef LOGINPAGE_H
+#ifndef LOGINPAGE_H //로그인 페이지
 #define LOGINPAGE_H
 
 #include <QWidget>

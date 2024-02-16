@@ -12,17 +12,20 @@ SOURCES += \
     customermain.cpp \
     loginpage.cpp \
     main.cpp \
-    customerclient.cpp
+    customerclient.cpp \
+    orderpage.cpp
 
 HEADERS += \
     customerclient.h \
     customermain.h \
-    loginpage.h
+    loginpage.h \
+    orderpage.h
 
 FORMS += \
     customerclient.ui \
     customermain.ui \
-    loginpage.ui
+    loginpage.ui \
+    orderpage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
