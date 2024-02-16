@@ -31,7 +31,11 @@ void CustomerMain::connectServer()
     tcpSocket->write("U");
 
     connect(tcpSocket,SIGNAL(readyRead()),this,SLOT(readMSG()));
-    connect(tcpSocket,SIGNAL(disconnected()),tcpSocket,SLOT(deleteLater()));
+    connect(tcpSocket,SIGNAL(disconnected()),this,SLOT(disconnected()));
+}
+void CustomerMain::disconnected()
+{
+    qDebug()<<"서버 연결 종료";
 }
 //서버로 메시지 송신
 void CustomerMain::sendServerMSG(QByteArray msg)
@@ -59,7 +63,11 @@ void CustomerMain::readMSG()
         //로그인 성공 여부 판단
         if(ck=="LS")
         {
-            //메인 화면으로
+            // ui->mainStack->setCurrentIndex(1); //넘어가는 화면 만들까
+            //메인 주문 화면으로
+            order = new OrderPage(this);
+            ui->mainStack->addWidget(order);
+            ui->mainStack->setCurrentWidget(order);
         }
         else if(ck=="LF")
         {
@@ -99,7 +107,7 @@ void CustomerMain::gotoLogin()
     //로그인 페이지
     login = new LoginPage(this,&myNum);
     ui->mainStack->addWidget(login);
-    ui->mainStack->setCurrentIndex(1);
+    ui->mainStack->setCurrentWidget(login);
 
     connect(login,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
 }
