@@ -72,5 +72,10 @@
         <file>Image/Back_2.png</file>
         <file>Image/delivery.png</file>
         <file>Image/Address.png</file>
+        <file>Image/eatsLOGO.png</file>
+        <file>Image/bok_logo.png</file>
+        <file>Image/profile.png</file>
+        <file>Image/order.png</file>
+        <file>Image/heart.png</file>
     </qresource>
 </RCC>

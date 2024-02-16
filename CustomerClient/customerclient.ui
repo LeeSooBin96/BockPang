@@ -57,15 +57,14 @@
     <widget class="QLabel" name="lb_Logo">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>40</y>
-       <width>300</width>
-       <height>110</height>
+       <x>70</x>
+       <y>65</y>
+       <width>250</width>
+       <height>80</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">
-border-image: url(:/Image/Join.png);</string>
+      <string notr="true">border-image: url(:/Image/bok_logo.png);</string>
      </property>
      <property name="text">
       <string/>
@@ -882,7 +881,7 @@ border-image: url(:/Image/Join.png);</string>
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>110</y>
+       <y>120</y>
        <width>80</width>
        <height>80</height>
       </rect>
@@ -908,7 +907,7 @@ border-image: url(:/Image/Join.png);</string>
      <property name="geometry">
       <rect>
        <x>95</x>
-       <y>110</y>
+       <y>120</y>
        <width>80</width>
        <height>80</height>
       </rect>
@@ -934,7 +933,7 @@ border-image: url(:/Image/Join.png);</string>
      <property name="geometry">
       <rect>
        <x>195</x>
-       <y>110</y>
+       <y>120</y>
        <width>80</width>
        <height>80</height>
       </rect>
@@ -960,7 +959,7 @@ border-image: url(:/Image/Join.png);</string>
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>110</y>
+       <y>120</y>
        <width>80</width>
        <height>80</height>
       </rect>
@@ -1023,8 +1022,14 @@ border-image: url(:/Image/Join.png);</string>
        <height>80</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Image/heart.png);</string>
+     </property>
      <property name="text">
-      <string>찜</string>
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Btn_Profile">
@@ -1036,8 +1041,14 @@ border-image: url(:/Image/Join.png);</string>
        <height>80</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Image/profile.png);</string>
+     </property>
      <property name="text">
-      <string>프로필</string>
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="Btn_Inquire">
@@ -1062,8 +1073,14 @@ border-image: url(:/Image/Join.png);</string>
        <height>80</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Image/order.png);</string>
+     </property>
      <property name="text">
-      <string>내역</string>
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_Photo_Marcket1">
