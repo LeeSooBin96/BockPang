@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>8</number>
+    <number>5</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QPushButton" name="Btn_first">
@@ -1162,7 +1162,6 @@ border-radius:10px;
     <zorder>label</zorder>
     <zorder>lb_Address</zorder>
     <zorder>Btn_Alarm</zorder>
-    <zorder>Btn_Bascket</zorder>
     <zorder>Search_Edit</zorder>
     <zorder>Btn_Pizza</zorder>
     <zorder>Btn_Chicken</zorder>
@@ -1178,6 +1177,7 @@ border-radius:10px;
     <zorder>lb_Photo_Marcket2</zorder>
     <zorder>lb_Marcket_Info2</zorder>
     <zorder>lb_Marcket_Info1</zorder>
+    <zorder>Btn_Bascket</zorder>
    </widget>
    <widget class="QWidget" name="page_8">
     <widget class="QPushButton" name="Btn_Marcket_Back">
