@@ -10,8 +10,8 @@ CustomerMain::CustomerMain(QWidget *parent)
     ui->setupUi(this);
 
     //초기 세팅
-    // connectServer(); //서버와 연결
-    myNum="1"; //임시
+    connectServer(); //서버와 연결
+
 
 }
 
@@ -31,12 +31,16 @@ void CustomerMain::connectServer()
     tcpSocket->write("U");
 
     connect(tcpSocket,SIGNAL(readyRead()),this,SLOT(readMSG()));
-    connect(tcpSocket,SIGNAL(disconnected()),tcpSocket,SLOT(deleteLater()));
+    connect(tcpSocket,SIGNAL(disconnected()),this,SLOT(disconnected()));
+}
+void CustomerMain::disconnected()
+{
+    qDebug()<<"서버 연결 종료";
 }
 //서버로 메시지 송신
 void CustomerMain::sendServerMSG(QByteArray msg)
 {
-    // tcpSocket->write(msg);
+    tcpSocket->write(msg);
     qDebug()<<"서버로 전송된 메시지 "<<msg;
 }
 //서버로부터 메시지 수신
@@ -52,6 +56,32 @@ void CustomerMain::readMSG()
     {
         myNum=msg; //부여받은 번호 저장
         qDebug()<<"부여받은 번호:"<<myNum;
+
+        //확인용----------------------------------------------------------------나중에 꼭 지워
+        // myNum="1"; //임시
+
+        order = new OrderPage(this,&myNum);
+        ui->mainStack->addWidget(order);
+        ui->mainStack->setCurrentWidget(order);
+
+        connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
+        //-----------------------------------------------------------------------
+    }
+    else if(msg.split('@')[0]=="S") //검색 결과 수신
+    {
+        order->PrintResultSearch(msg.split('@'));
+    }
+    else if(msg.split('@')[0]=="T") //카테 목록 수신
+    {
+        order->PrintSelectedCate(msg.split('@'));
+    }
+    else if(msg.split('@')[0]=="M") //가게 정보 수신
+    {
+        order->PrintMarcketBase(msg.split('@'));
+    }
+    else if(msg.split('@')[0]=="MC") //메뉴 정보 수신
+    {
+        order->PrintMenuList(msg.split('@'));
     }
     else if(msg.split('@')[0]=="U") //로그인 관련 수신 메시지
     {
@@ -59,8 +89,13 @@ void CustomerMain::readMSG()
         //로그인 성공 여부 판단
         if(ck=="LS")
         {
-            //메인 화면으로
+            // ui->mainStack->setCurrentIndex(1); //넘어가는 화면 만들까
+            //메인 주문 화면으로
+            order = new OrderPage(this,&myNum);
+            ui->mainStack->addWidget(order);
+            ui->mainStack->setCurrentWidget(order);
 
+            connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
         }
         else if(ck=="LF")
         {
@@ -100,7 +135,7 @@ void CustomerMain::gotoLogin()
     //로그인 페이지
     login = new LoginPage(this,&myNum);
     ui->mainStack->addWidget(login);
-    ui->mainStack->setCurrentIndex(1);
+    ui->mainStack->setCurrentWidget(login);
 
     connect(login,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
 }
