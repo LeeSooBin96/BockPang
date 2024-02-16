@@ -79,5 +79,7 @@
         <file>Image/heart.png</file>
         <file>Image/order.png</file>
         <file>Image/profile.png</file>
+        <file>Image/Screenshot_20240216_114425.jpg</file>
+        <file>Image/Screenshot_20240216_114855.jpg</file>
     </qresource>
 </RCC>
