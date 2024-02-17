@@ -79,7 +79,25 @@
         <file>Image/heart.png</file>
         <file>Image/order.png</file>
         <file>Image/profile.png</file>
-        <file>Image/Screenshot_20240216_114425.jpg</file>
-        <file>Image/Screenshot_20240216_114855.jpg</file>
+        <file>Image/ad1.png</file>
+        <file>Image/ad2.png</file>
+        <file>resources/1_menu46.png</file>
+        <file>resources/1_menu47.png</file>
+        <file>resources/1_menu48.png</file>
+        <file>resources/1_menu49.png</file>
+        <file>resources/1_menu50.png</file>
+        <file>resources/1_menu51.png</file>
+        <file>resources/1_menu52.png</file>
+        <file>resources/1_menu53.png</file>
+        <file>resources/1_menu54.png</file>
+        <file>resources/1_menu55.png</file>
+        <file>resources/1_menu56.png</file>
+        <file>resources/1_menu57.png</file>
+        <file>resources/1_menu58.png</file>
+        <file>resources/1_menu59.png</file>
+        <file>resources/1_menu60.png</file>
+        <file>resources/1_menu61.png</file>
+        <file>Image/Back_White.png</file>
+        <file>Image/HOME_white.png</file>
     </qresource>
 </RCC>

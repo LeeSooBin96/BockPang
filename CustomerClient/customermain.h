@@ -24,6 +24,7 @@ private:
     Ui::CustomerMain *ui;
     QTcpSocket* tcpSocket; //서버와 통신하기 위한 소켓
     QString myNum; //서버로부터 부여받은 번호
+    QString Nickname; //로그인시 저장 - 닉네임
     LoginPage* login; //로그인 클래스
     OrderPage* order; //주문 페이지 클래스
 
