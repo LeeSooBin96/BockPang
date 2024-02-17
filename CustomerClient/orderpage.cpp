@@ -10,12 +10,12 @@ OrderPage::OrderPage(QWidget *parent,QString *code)
     ui->stackedWidget->setCurrentIndex(0);
 
     //확인용
-    selectedmNum=1;
-    QString list=QString("코드@가게이름@운영시간@최소주문@배달팁@2@카테고리1@카테고리2");
-    PrintMarcketBase(list.split('@'));
-    QString list2=QString("코드@2@1@메뉴1@메뉴소개1@메뉴가격1@2@메뉴2@메뉴소개2@메뉴가격2");
-    PrintMenuList(list2.split('@'));
-    ui->stackedWidget->setCurrentIndex(3);
+    // selectedmNum=1;
+    // QString list=QString("코드@가게이름@운영시간@최소주문@배달팁@2@카테고리1@카테고리2");
+    // PrintMarcketBase(list.split('@'));
+    // QString list2=QString("코드@2@1@메뉴1@메뉴소개1@메뉴가격1@2@메뉴2@메뉴소개2@메뉴가격2");
+    // PrintMenuList(list2.split('@'));
+    // ui->stackedWidget->setCurrentIndex(3);
     // emit ui->toolBMenuCate->currentChanged(0);
 }
 
@@ -103,7 +103,7 @@ void OrderPage::SendMarcketNum(const QModelIndex &index)
     QByteArray msg="M"+myCode.toUtf8()+"^"+QString::number(selectedmNum).toUtf8();
     emit signal_sendMSG(msg);
 
-    expageNum=ui->stackedWidget->currentIndex(); //이전으로 기능을 위해 인덱스 저장
+    expageNum.append(ui->stackedWidget->currentIndex()); //이전으로 기능을 위해 인덱스 저장
     ui->stackedWidget->setCurrentIndex(3);
     ui->tabWidget->setCurrentIndex(0);
     ui->lblBoarderIMG->setPixmap(QPixmap(":/resources/"+QString::number(selectedmNum)+"_board.png"));
@@ -147,28 +147,35 @@ void OrderPage::PrintMarcketBase(QStringList mlist)
     {
         qDebug()<<menuLWlist[i]->objectName(); //확인용 //잘들어가라
     }
+    settedCateNum.clear();
     emit ui->toolBMenuCate->currentChanged(0);
 }
 //메뉴 카테고리 선택시
 void OrderPage::SendMenuCateNum(int index)
 {
-    QByteArray msg="M"+myCode.toUtf8()+"^C^"+QString::number(selectedmNum).toUtf8()+"^"+QString::number(index+1).toUtf8();
-    emit signal_sendMSG(msg);
+    if(settedCateNum.indexOf(index)<0) //없으면 -1
+    {
+        QByteArray msg="M"+myCode.toUtf8()+"^C^"+QString::number(selectedmNum).toUtf8()+"^"+QString::number(index+1).toUtf8();
+        emit signal_sendMSG(msg);
 
-    selectedmcNum=index;
-    menuLWlist[index]->clear();
+        settedCateNum.append(index);
+        selectedmcNum=index;
+        menuLWlist[index]->clear();
+    }
 }
 //메뉴 리스트 출력
 void OrderPage::PrintMenuList(QStringList mlist)
 {
+    // for(QString m: mlist) qDebug()<<m;
     // "코드@2@1@메뉴1@메뉴소개1@메뉴가격1@메뉴2@메뉴소개2@메뉴가격2"
     //오는 데이터 순서: 코드+메뉴개수+메뉴번호+메뉴이름+메뉴소개+메뉴가격
-    for(int i=0;i<mlist[1].toInt()*4;i+=4) //잘돌아감 확인함
+    for(int i=0;i<mlist[1].toInt()*4&&mlist.size()-2==mlist[1].toInt()*4;i+=4) //잘돌아감 확인함 --오는 메시지가 너무 크면 잘려서 와서 오류 난것 어떻게 해결할까
     {
         // qDebug()<<mlist[i+2]<<mlist[i+3]<<mlist[i+4]<<mlist[i+5];
         QListWidgetItem* item= new QListWidgetItem;
         item->setWhatsThis("menu_"+mlist[2+i]);
         item->setIcon(QIcon(":/resources/"+QString::number(selectedmNum)+"_menu"+mlist[2+i]+".png"));
+        if(mlist[4+i]=="0") mlist[4+i]="";
         item->setText(mlist[3+i]+"\n"+mlist[4+i]+"\n"+mlist[5+i]+"원");
         item->setTextAlignment(Qt::AlignLeft);
         item->setTextAlignment(Qt::AlignVCenter);
@@ -185,11 +192,57 @@ void OrderPage::SendMenuNum(QListWidgetItem *item)
 
     QByteArray msg="M"+myCode.toUtf8()+"^N^"+item->whatsThis().split('_')[1].toUtf8();
     emit signal_sendMSG(msg);
+
+    expageNum.append(3);
+    ui->stackedWidget->setCurrentIndex(4);
+
+    //메뉴 사진, 이름, 소개, 가격 배치
+    ui->lblOPmenuIMG->setStyleSheet("border-image: url(:/resources/"+QString::number(selectedmNum)+"_menu"+item->whatsThis().split('_')[1]+".png);");
+    ui->lblOPmenuName->setText(item->text().split('\n')[0]);
+    ui->lblOPmenuIntro->setText(item->text().split('\n')[1]);
+    ui->lblOPmenuPrice->setText(item->text().split('\n')[2]);
+}
+//메뉴 옵션 내용 출력
+void OrderPage::PrintMenuOPtion(QStringList oplist)
+{
+    qDebug()<<oplist.size();
+    int index=2;
+    static qint64 opNum=1;
+    while(true)
+    {
+        if(index>oplist.size()) break; //숫자가 아니면
+        qDebug()<<oplist[index-1].toInt();
+        QGroupBox* gbox=new QGroupBox(this);
+        gbox->setTitle(oplist[index]);
+        QVBoxLayout* vlay=new QVBoxLayout;
+        for(int i=0;i<oplist[index-1].toInt()*2;i+=2)
+        {
+            QRadioButton* rbtn=new QRadioButton(this);
+            rbtn->setObjectName("op_"+QString::number(opNum));
+            qDebug()<<rbtn->objectName();
+            rbtn->setText(oplist[index+2+i]);
+            QLabel* lbl=new QLabel(this);
+            lbl->setText("+"+oplist[index+3+i]+"원");
+            lbl->setStyleSheet("color: rgb(162, 162, 162);");
+            QHBoxLayout* hlay=new QHBoxLayout;
+            hlay->addWidget(rbtn,8);
+            hlay->addWidget(lbl,2);
+            vlay->addLayout(hlay);
+            opNum++;
+        }
+        gbox->setLayout(vlay);
+        ui->OPVlayout->addWidget(gbox);
+
+        index=index+(oplist[index-1].toInt()+1)*2+1;
+        qDebug()<<index;
+    }
+    //그룹박스 만들어서 라디오버튼 추가해야함
+    // ui->OPVlayout->setStretch(0,10);
 }
 //서버에 가게 상세정보 요청
 void OrderPage::SendMarcketNumforDetail(int index)
 {
-    if(index==1)
+    if(index==1&&ui->lblCnum->text()=="TextLabel") //요청된 데이터 중복요청 방지
     {
         QByteArray msg="M"+myCode.toUtf8()+"^D^"+QString::number(selectedmNum).toUtf8();
         emit signal_sendMSG(msg);
@@ -200,8 +253,9 @@ void OrderPage::SendMarcketNumforDetail(int index)
     }
 }
 //매장 상세 정보 출력
-void OrderPage::PringMarcketInfo(QStringList ilist)
+void OrderPage::PrintMarcketInfo(QStringList ilist)
 {
+    for(QString l:ilist) if(l=="0") l="";
     ui->lblItroduce->setText(ilist[1]);
     ui->lblTel->setText(ilist[2]);
     ui->lblPayWay->setText(ilist[3]);
@@ -216,10 +270,13 @@ void OrderPage::gotoHome() //홈화면으로
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->Search_Edit->clear();
+    expageNum.clear();
 }
 void OrderPage::gotoExPage() //이전화면으로
 {
-    ui->stackedWidget->setCurrentIndex(expageNum);
+    ui->stackedWidget->setCurrentIndex(expageNum.last());
+    expageNum.pop_back();
+    for(quint64 i: expageNum) qDebug()<<i;
 }
 
 

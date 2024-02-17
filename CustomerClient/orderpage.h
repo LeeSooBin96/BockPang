@@ -2,7 +2,9 @@
 #define ORDERPAGE_H
 
 #include <QWidget>
-#include <QScrollArea>
+// #include <QScrollArea>
+#include <QGroupBox>
+#include <QRadioButton>
 #include <QListWidgetItem>
 
 namespace Ui {
@@ -22,7 +24,8 @@ public:
     void PrintSelectedCate(QStringList); //카테고리에 해당하는 목록 출력
     void PrintMarcketBase(QStringList); //가게 정보 출력
     void PrintMenuList(QStringList); //메뉴 리스트 출력
-    void PringMarcketInfo(QStringList); //매장 상세정보 출력
+    void PrintMarcketInfo(QStringList); //매장 상세정보 출력
+    void PrintMenuOPtion(QStringList); //메뉴 옵션 내용 출력
 
 signals:
     void signal_sendMSG(QByteArray);
@@ -31,9 +34,10 @@ private:
     Ui::OrderPage *ui;
     QString myCode; //서버와 통신시 사용할 코드 ( 요청코드+클라이언트번호 )
     QVector<int> mNumlist; //목록에 있는 가게번호 저장
+    QVector<int> settedCateNum; //요청된 카테고리 번호 배열 -- 중복 요청 방지
     QList<QListWidget*> menuLWlist; //메뉴 리스트위젯 모음
     quint64 selectedmNum,selectedmcNum; //선택된 가게 번호,메뉴 카테고리번호 저장
-    quint64 expageNum; //이전 페이지 인덱스 저장 - 이전 화면으로 돌아갈때 사용
+    QList<quint64> expageNum; //이전 페이지 인덱스 저장 - 이전 화면으로 돌아갈때 사용
 
 private slots:
     void SendSearchKey(); //서버에 검색어 전송

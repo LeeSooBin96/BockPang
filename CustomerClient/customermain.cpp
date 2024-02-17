@@ -12,15 +12,6 @@ CustomerMain::CustomerMain(QWidget *parent)
     //초기 세팅
     connectServer(); //서버와 연결
 
-    //확인용----------------------------------------------------------------나중에 꼭 지워
-    myNum="1"; //임시
-
-    order = new OrderPage(this,&myNum);
-    ui->mainStack->addWidget(order);
-    ui->mainStack->setCurrentWidget(order);
-
-    connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
-    //-----------------------------------------------------------------------
 }
 
 CustomerMain::~CustomerMain()
@@ -57,14 +48,24 @@ void CustomerMain::readMSG()
     QString msg;
     if(tcpSocket->bytesAvailable()>0) //읽을 메시지가 있다면
     {
-        msg=tcpSocket->readAll();
+        msg.append(tcpSocket->readAll());
         qDebug()<<"서버로부터 "<<msg;
+        // msg.append(tcpSocket->readAll()); //너무 길면 더 읽어야하는데
     }
     if(msg.split('@').size()==1) //번호만 보낸것이기에
     {
         myNum=msg; //부여받은 번호 저장
         qDebug()<<"부여받은 번호:"<<myNum;
 
+        //확인용----------------------------------------------------------------나중에 꼭 지워
+        // myNum="1"; //임시
+
+        order = new OrderPage(this,&myNum);
+        ui->mainStack->addWidget(order);
+        ui->mainStack->setCurrentWidget(order);
+
+        connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
+        //-----------------------------------------------------------------------
 
     }
     else if(msg.split('@')[0]=="S") //검색 결과 수신
@@ -81,11 +82,28 @@ void CustomerMain::readMSG()
     }
     else if(msg.split('@')[0]=="MC") //메뉴 정보 수신
     {
+        //길면 잘리기 때문에 대비하기 --안먹힘
+        // while(msg.split('@').size()<msg.split('@')[1].toInt()*4+2) msg.append(tcpSocket->readAll()); //메뉴 개수
+        for(int i=0;i<1000;i++) msg.append(tcpSocket->readAll());
         order->PrintMenuList(msg.split('@'));
     }
     else if(msg.split('@')[0]=="MD") //매장 상세 정보 수신
     {
-        order->PringMarcketInfo(msg.split('@'));
+        // while(tcpSocket->bytesAvailable()>0) msg.append(tcpSocket->readAll()); //메뉴 개수
+        // for(int i=0;i<1000000000;i++) msg.append(tcpSocket->readAll());
+        // qDebug()<<msg.size();
+        // qDebug()<<tcpSocket->readAll()
+        // while()
+        //하 길이 길어지니까 길이 접두사 없이 통신하기 힘드네
+        // int len=msg.split('@')[1].toInt()+msg.split('@')[1].size()+4;
+        // while(msg.size()!=len) msg.append(tcpSocket->readAll());
+        for(int i=0;i<1000000;i++) msg.append(tcpSocket->readAll());
+        order->PrintMarcketInfo(msg.split('@'));
+
+    }
+    else if(msg.split('@')[0]=="MO") //옵션 내용 수신
+    {
+        order->PrintMenuOPtion(msg.split('@'));
     }
     else if(msg.split('@')[0]=="U") //로그인 관련 수신 메시지
     {
@@ -93,6 +111,8 @@ void CustomerMain::readMSG()
         //로그인 성공 여부 판단
         if(ck=="LS")
         {
+            Nickname=msg.split('@')[2]; //로그인된 유저 닉네임 저장
+            qDebug()<<Nickname;
             // ui->mainStack->setCurrentIndex(1); //넘어가는 화면 만들까
             //메인 주문 화면으로
             order = new OrderPage(this,&myNum);
