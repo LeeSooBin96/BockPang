@@ -23,7 +23,8 @@ void CustomerMain::connectServer()
 {
     tcpSocket = new QTcpSocket(this);
 
-    QHostAddress server("10.10.20.111");
+    // QHostAddress server("10.10.20.111");
+    QHostAddress server("192.168.0.14");
     qint64 portNum=99999;
 
     tcpSocket->connectToHost(server,portNum);
@@ -60,13 +61,17 @@ void CustomerMain::readMSG()
         //확인용----------------------------------------------------------------나중에 꼭 지워
         // myNum="1"; //임시
 
-        order = new OrderPage(this,&myNum);
-        ui->mainStack->addWidget(order);
-        ui->mainStack->setCurrentWidget(order);
+        // order = new OrderPage(this,&myNum);
+        // ui->mainStack->addWidget(order);
+        // ui->mainStack->setCurrentWidget(order);
 
-        connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
+        // connect(order,SIGNAL(signal_sendMSG(QByteArray)),this,SLOT(sendServerMSG(QByteArray)));
         //-----------------------------------------------------------------------
 
+    }
+    else if(msg.split('@')[0]=="Q") //고객 문의 응답
+    {
+        order->ArriveQuestionAnswer(msg.split('@')[1]);
     }
     else if(msg.split('@')[0]=="S") //검색 결과 수신
     {
@@ -96,8 +101,8 @@ void CustomerMain::readMSG()
         // while()
         //하 길이 길어지니까 길이 접두사 없이 통신하기 힘드네
         // int len=msg.split('@')[1].toInt()+msg.split('@')[1].size()+4;
-        // while(msg.size()!=len) msg.append(tcpSocket->readAll());
-        for(int i=0;i<1000000;i++) msg.append(tcpSocket->readAll());
+        // while(msg.size()<len) msg.append(tcpSocket->readAll());
+        // for(int i=0;i<1000000;i++) msg.append(tcpSocket->readAll());
         order->PrintMarcketInfo(msg.split('@'));
 
     }

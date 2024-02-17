@@ -97,5 +97,7 @@
         <file>resources/1_menu59.png</file>
         <file>resources/1_menu60.png</file>
         <file>resources/1_menu61.png</file>
+        <file>Image/Back_White.png</file>
+        <file>Image/HOME_white.png</file>
     </qresource>
 </RCC>

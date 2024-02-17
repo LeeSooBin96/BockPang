@@ -44,7 +44,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QPushButton" name="Btn_Burger_3">
@@ -63,7 +63,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Burger.png</normaloff>:/Image/Burger.png</iconset>
        </property>
        <property name="iconSize">
@@ -152,7 +152,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Alarm.png</normaloff>:/Image/Alarm.png</iconset>
        </property>
        <property name="iconSize">
@@ -229,7 +229,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="Resource.qrc">:/Image/ad2.png</pixmap>
+        <pixmap>:/Image/ad2.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -322,7 +322,7 @@ background-color: rgb(0, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Pizza.png</normaloff>:/Image/Pizza.png</iconset>
        </property>
        <property name="iconSize">
@@ -369,7 +369,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Chicken.png</normaloff>:/Image/Chicken.png</iconset>
        </property>
        <property name="iconSize">
@@ -395,7 +395,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="Resource.qrc">:/Image/ad1.png</pixmap>
+        <pixmap>:/Image/ad1.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -420,7 +420,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Meat.png</normaloff>:/Image/Meat.png</iconset>
        </property>
        <property name="iconSize">
@@ -897,7 +897,7 @@ background-color: rgb(153, 153, 153);</string>
         <rect>
          <x>0</x>
          <y>50</y>
-         <width>381</width>
+         <width>383</width>
          <height>621</height>
         </rect>
        </property>
@@ -1019,8 +1019,8 @@ background-color: rgb(153, 153, 153);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>86</width>
-                 <height>70</height>
+                 <width>375</width>
+                 <height>461</height>
                 </rect>
                </property>
                <attribute name="label">
@@ -1083,11 +1083,20 @@ background-color: rgb(153, 153, 153);</string>
                 <height>0</height>
                </size>
               </property>
+              <property name="maximumSize">
+               <size>
+                <width>375</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="baseSize">
                <size>
                 <width>0</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
               </property>
               <property name="widgetResizable">
                <bool>true</bool>
@@ -1097,15 +1106,24 @@ background-color: rgb(153, 153, 153);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>359</width>
-                 <height>439</height>
+                 <width>373</width>
+                 <height>489</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
                 <item>
                  <widget class="QLabel" name="label_3">
+                  <property name="maximumSize">
+                   <size>
+                    <width>375</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>매장소개</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -1124,6 +1142,12 @@ background-color: rgb(153, 153, 153);</string>
                     <height>0</height>
                    </size>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>375</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>TextLabel</string>
                   </property>
@@ -1131,7 +1155,7 @@ background-color: rgb(153, 153, 153);</string>
                    <bool>false</bool>
                   </property>
                   <property name="wordWrap">
-                   <bool>false</bool>
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -1157,7 +1181,7 @@ background-color: rgb(153, 153, 153);</string>
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="2,7">
                   <item>
                    <widget class="QLabel" name="label_9">
                     <property name="text">
@@ -1175,7 +1199,7 @@ background-color: rgb(153, 153, 153);</string>
                  </layout>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                 <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,2,4">
                   <item>
                    <widget class="QLabel" name="label_10">
                     <property name="text">
@@ -1221,7 +1245,7 @@ background-color: rgb(153, 153, 153);</string>
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="2,7">
                   <item>
                    <widget class="QLabel" name="label_13">
                     <property name="text">
@@ -1239,7 +1263,7 @@ background-color: rgb(153, 153, 153);</string>
                  </layout>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="2,7">
                   <item>
                    <widget class="QLabel" name="label_14">
                     <property name="text">
@@ -1257,7 +1281,7 @@ background-color: rgb(153, 153, 153);</string>
                  </layout>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_9">
+                 <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="2,7">
                   <item>
                    <widget class="QLabel" name="label_15">
                     <property name="text">
@@ -1296,7 +1320,7 @@ background-color: rgb(153, 153, 153);</string>
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="2,7">
                   <item>
                    <widget class="QLabel" name="label_16">
                     <property name="text">
@@ -1314,7 +1338,7 @@ background-color: rgb(153, 153, 153);</string>
                  </layout>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="2,7">
                   <item>
                    <widget class="QLabel" name="label_17">
                     <property name="text">
@@ -1332,7 +1356,7 @@ background-color: rgb(153, 153, 153);</string>
                  </layout>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_12">
+                 <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="2,7">
                   <item>
                    <widget class="QLabel" name="label_18">
                     <property name="text">
@@ -1372,11 +1396,17 @@ background-color: rgb(153, 153, 153);</string>
                 </item>
                 <item>
                  <widget class="QLabel" name="lblOrigin">
+                  <property name="maximumSize">
+                   <size>
+                    <width>375</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>TextLabel</string>
                   </property>
                   <property name="wordWrap">
-                   <bool>false</bool>
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -1626,6 +1656,9 @@ border-radius:10px;
       <zorder>pushButton</zorder>
      </widget>
      <widget class="QWidget" name="page_9">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);</string>
+      </property>
       <widget class="QPushButton" name="Btn_Marcket_Back_5">
        <property name="geometry">
         <rect>
@@ -1636,7 +1669,7 @@ border-radius:10px;
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
+        <string notr="true">border-image: url(:/Image/Back_White.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -1648,6 +1681,113 @@ border-radius:10px;
         </size>
        </property>
        <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_20">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>40</y>
+         <width>375</width>
+         <height>631</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 0, 0);
+border-radius:10px;
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>610</y>
+         <width>351</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="8,2">
+        <item>
+         <widget class="QLineEdit" name="LEInputMSG">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius:15px;
+background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="BtnInput">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius:15px;
+background-color: rgb(153, 153, 153);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>입력</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QListWidget" name="LWQuestion">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>351</width>
+         <height>541</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius:15px;
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="wordWrap">
         <bool>true</bool>
        </property>
       </widget>
@@ -2156,9 +2296,7 @@ border-radius:10px;
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="Resource.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>Btn_Pizza_1</sender>
@@ -2423,8 +2561,8 @@ border-radius:10px;
    <slot>SendMenuCateNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>309</x>
-     <y>187</y>
+     <x>100</x>
+     <y>179</y>
     </hint>
     <hint type="destinationlabel">
      <x>499</x>
@@ -2464,6 +2602,70 @@ border-radius:10px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Btn_Marcket_Back_5</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoHome()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>25</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-86</x>
+     <y>36</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Inquire</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoQuestionPage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>621</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-69</x>
+     <y>621</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LEInputMSG</sender>
+   <signal>returnPressed()</signal>
+   <receiver>BtnInput</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>237</x>
+     <y>631</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>631</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>BtnInput</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>SendQuestion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>337</x>
+     <y>623</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>532</x>
+     <y>632</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SendSearchKey()</slot>
@@ -2473,5 +2675,7 @@ border-radius:10px;
   <slot>gotoExPage()</slot>
   <slot>SendMenuCateNum(int)</slot>
   <slot>SendMarcketNumforDetail(int)</slot>
+  <slot>gotoQuestionPage()</slot>
+  <slot>SendQuestion()</slot>
  </slots>
 </ui>

@@ -255,7 +255,7 @@ void OrderPage::SendMarcketNumforDetail(int index)
 //매장 상세 정보 출력
 void OrderPage::PrintMarcketInfo(QStringList ilist)
 {
-    for(QString l:ilist) if(l=="0") l="";
+    for(QString l:ilist) if(l=="0") l.clear();
     ui->lblItroduce->setText(ilist[1]);
     ui->lblTel->setText(ilist[2]);
     ui->lblPayWay->setText(ilist[3]);
@@ -263,6 +263,26 @@ void OrderPage::PrintMarcketInfo(QStringList ilist)
     ui->lblBrand->setText(ilist[5]);
     ui->lblCnum->setText(ilist[6]);
     ui->lblOrigin->setText(ilist[7]);
+}
+//고객센터 응답 수신
+void OrderPage::ArriveQuestionAnswer(QString msg)
+{
+    QListWidgetItem* item=new QListWidgetItem(msg);
+    item->setTextAlignment(Qt::AlignLeft);
+    ui->LWQuestion->addItem(item);
+}
+//고객센터 문의 송신
+void OrderPage::SendQuestion()
+{
+    if(!ui->LEInputMSG->text().isEmpty())
+    {
+        QListWidgetItem* item=new QListWidgetItem(ui->LEInputMSG->text());
+        item->setTextAlignment(Qt::AlignRight);
+        ui->LWQuestion->addItem(item);
+        emit signal_sendMSG("Q"+myCode.toUtf8()+"^Q^"+ui->LEInputMSG->text().toUtf8());
+
+        ui->LEInputMSG->clear();
+    }
 }
 
 //화면 이동
@@ -278,6 +298,15 @@ void OrderPage::gotoExPage() //이전화면으로
     expageNum.pop_back();
     for(quint64 i: expageNum) qDebug()<<i;
 }
+void OrderPage::gotoQuestionPage() //고객 문의 창으로
+{
+    ui->stackedWidget->setCurrentIndex(5);
+    QListWidgetItem* item=new QListWidgetItem("센터에 접속중입니다...기다려주세요");
+    item->setTextAlignment(Qt::AlignLeft);
+    ui->LWQuestion->addItem(item);
+    emit signal_sendMSG("Q"+myCode.toUtf8()+"^");
+}
+
 
 
 
