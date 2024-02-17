@@ -26,6 +26,8 @@ signals:
 private slots:
     void on_LWCustomList_clicked(const QModelIndex &index);
 
+    void on_BtnInput_clicked();
+
 private:
     Ui::GarbageCenter *ui;
     QMap<QString,QListWidget*> ChatMatch;

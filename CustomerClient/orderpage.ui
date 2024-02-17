@@ -44,7 +44,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QPushButton" name="Btn_Burger_3">
@@ -63,7 +63,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Burger.png</normaloff>:/Image/Burger.png</iconset>
        </property>
        <property name="iconSize">
@@ -152,7 +152,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Alarm.png</normaloff>:/Image/Alarm.png</iconset>
        </property>
        <property name="iconSize">
@@ -229,7 +229,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="Resource.qrc">:/Image/ad2.png</pixmap>
+        <pixmap>:/Image/ad2.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -322,7 +322,7 @@ background-color: rgb(0, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Pizza.png</normaloff>:/Image/Pizza.png</iconset>
        </property>
        <property name="iconSize">
@@ -369,7 +369,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Chicken.png</normaloff>:/Image/Chicken.png</iconset>
        </property>
        <property name="iconSize">
@@ -395,7 +395,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="Resource.qrc">:/Image/ad1.png</pixmap>
+        <pixmap>:/Image/ad1.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -420,7 +420,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="Resource.qrc">
+        <iconset>
          <normaloff>:/Image/Meat.png</normaloff>:/Image/Meat.png</iconset>
        </property>
        <property name="iconSize">
@@ -2296,9 +2296,7 @@ background-color: rgb(255, 255, 255);</string>
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="Resource.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>Btn_Pizza_1</sender>

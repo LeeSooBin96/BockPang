@@ -274,12 +274,15 @@ void OrderPage::ArriveQuestionAnswer(QString msg)
 //고객센터 문의 송신
 void OrderPage::SendQuestion()
 {
-    QListWidgetItem* item=new QListWidgetItem(ui->LEInputMSG->text());
-    item->setTextAlignment(Qt::AlignRight);
-    ui->LWQuestion->addItem(item);
-    emit signal_sendMSG("Q"+myCode.toUtf8()+"^Q^"+ui->LEInputMSG->text().toUtf8());
+    if(!ui->LEInputMSG->text().isEmpty())
+    {
+        QListWidgetItem* item=new QListWidgetItem(ui->LEInputMSG->text());
+        item->setTextAlignment(Qt::AlignRight);
+        ui->LWQuestion->addItem(item);
+        emit signal_sendMSG("Q"+myCode.toUtf8()+"^Q^"+ui->LEInputMSG->text().toUtf8());
 
-    ui->LEInputMSG->clear();
+        ui->LEInputMSG->clear();
+    }
 }
 
 //화면 이동
@@ -303,6 +306,8 @@ void OrderPage::gotoQuestionPage() //고객 문의 창으로
     ui->LWQuestion->addItem(item);
     emit signal_sendMSG("Q"+myCode.toUtf8()+"^");
 }
+
+
 
 
 
