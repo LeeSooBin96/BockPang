@@ -17,8 +17,8 @@ public:
 protected:
     void incomingConnection(qintptr socketfd);
 private:
-    QSet<QTcpSocket *> qset_clntChatList;
-    QMap<QTcpSocket *, QString> qmap_userList;
+    QSet<QTcpSocket *> qset_clntChatList; //소켓리스트(고객,매장,배달 구별 x 저장)
+    QMap<QTcpSocket *, QString> qmap_userList; //소켓리스트(고객 소켓-닉네임 매핑)
     QList<QTcpSocket*> newchat;
     QSqlDatabase* DB;
 
@@ -32,7 +32,9 @@ signals:
 private slots:
     void read_MSG();
     void Chat_disconnected();
-    // void sendPerformList();
+
+    //고객센터 문의 응답
+    void send_MSG(QString nick,QString msg);
 };
 
 #endif // CHATSERVER_H

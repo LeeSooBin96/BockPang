@@ -1,4 +1,5 @@
 #include <QtNetwork>
+//서버 오픈 하는 클래스
 #include "server.h"
 #include "chatserver.h"
 #include "ui_server.h"

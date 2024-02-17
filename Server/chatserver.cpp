@@ -1,3 +1,4 @@
+//소켓 통신
 #include <QtWidgets>
 #include <QDebug>
 #include "chatserver.h"
@@ -6,15 +7,17 @@
 ChatServer::ChatServer(QObject *parent): QTcpServer(parent)
 {
     QSqlDatabase DB = QSqlDatabase::addDatabase("QSQLITE");
-    DB.setDatabaseName("/Users/Aiot/Documents/Bokpang");
+    DB.setDatabaseName("/Users/HAPPYFAMILY/Documents/Bokpang");
 
     if(!DB.open())
         qDebug() << "fail Database";
     else
         qDebug() << "Connect";
-
+    //고객센터 오픈
     center=new GarbageCenter();
     center->hide();
+
+    connect(center,SIGNAL(signal_sendMSG(QString,QString)),this,SLOT(send_MSG(QString,QString)));
 }
 
 ChatServer::~ChatServer()
@@ -23,17 +26,17 @@ ChatServer::~ChatServer()
         client->disconnectFromHost();
 }
 
-void ChatServer::incomingConnection(qintptr socketfd)
+void ChatServer::incomingConnection(qintptr socketfd) //오버라이드? --새로운 연결 요청 들어올때마다
 {
     QTcpSocket *newConnectedChat = new QTcpSocket(this);
 
-    newConnectedChat -> setSocketDescriptor(socketfd);
+    newConnectedChat -> setSocketDescriptor(socketfd); //소켓 디스크립터 설정
 
-    qset_clntChatList.insert(newConnectedChat);
-    emit chat_update_ChatCNT(qset_clntChatList.count());
+    qset_clntChatList.insert(newConnectedChat); //소켓 집합에 추가
+    emit chat_update_ChatCNT(qset_clntChatList.count()); //접속자수 갱신
 
     QString str = QString("새로운 접속자 : %1").arg(newConnectedChat->peerAddress().toString());
-    emit chat_showMSG(str);
+    emit chat_showMSG(str); //접속자 정보 출력
 
     connect(newConnectedChat,SIGNAL(readyRead()),this,SLOT(read_MSG()));
 
@@ -62,8 +65,16 @@ void ChatServer::read_MSG()
     }
     else if(line.split('^')[0].front() == 'Q') //고객 문의창으로
     {
-        if(center->isHidden())
-            center->show();
+        if(line.split('^')[1]=="")
+        {
+            center->connectingUser(qmap_userList[senderChat]);
+            if(center->isHidden())
+                center->show();
+        }
+        else if(line.split('^')[1]=="Q")
+        {
+            center->ReceiveQuestion(qmap_userList[senderChat],line.split('^')[2]);
+        }
     }
     else if(line.split('^')[0].front() == 'U')                  // 고객 로그인 / 회원가입 관련 처리
     {
@@ -84,7 +95,9 @@ void ChatServer::read_MSG()
             query1.bindValue(":PW",PW);
             if(query1.exec() && query1.next() && query2.exec() && query2.next())
             {
-                QString NICKNAME = query2.value(0).toString();
+                NICKNAME = query2.value(0).toString();
+                qmap_userList[senderChat]=NICKNAME;
+
                 senderChat-> write("U@LS@"+NICKNAME.toUtf8());
             }
             else
@@ -320,13 +333,13 @@ void ChatServer::read_MSG()
             qry1.prepare("SELECT INTRODUCE,PHONE,PAYMENT,CEO,COMPANY,CEONUMBER,ORIGIN FROM MARCKET_INFO;");
             qry1.exec();
             QByteArray message;
-            int size = message.length();
+            // int size = message.length();
 
             message.push_back(QByteArray("MD@"));
             while(qry1.next())
             {
-                message.push_back(QByteArray("@"));
-                message.push_back(QString::number(size).toUtf8());
+                // message.push_back(QByteArray("@"));
+                // message.push_back(QString::number(size).toUtf8());
                 message.push_back(qry1.value(0).toByteArray());
                 message.push_back(QByteArray("@"));
                 message.push_back(qry1.value(1).toByteArray());
@@ -342,7 +355,8 @@ void ChatServer::read_MSG()
                 message.push_back(qry1.value(6).toByteArray());
                 message.push_back(QByteArray("@"));
             }
-
+            // int size = message.size();
+            // message.push_front("MD@"+QString::number(size).toUtf8()+"@");
             senderChat->write(message);
         }
         else
@@ -380,6 +394,12 @@ void ChatServer::read_MSG()
 
     }
 }
+//고객센터 문의 응답 내용 전송
+void ChatServer::send_MSG(QString nick,QString msg)
+{
+    qDebug()<<nick<<msg;
+    qmap_userList.key(nick)->write("Q@"+msg.toUtf8());
+}
 void ChatServer::Chat_disconnected()
 {
     QTcpSocket *Chat = (QTcpSocket*)sender();
@@ -387,7 +407,7 @@ void ChatServer::Chat_disconnected()
     qset_clntChatList.remove(Chat);
     emit chat_update_ChatCNT(qset_clntChatList.count());
 
-    QString user = qmap_userList[Chat];
+    // QString user = qmap_userList[Chat];
     qmap_userList.remove(Chat);
 
     QString str = QString("*연결 종료 IP: %2").arg(Chat->peerAddress().toString());
