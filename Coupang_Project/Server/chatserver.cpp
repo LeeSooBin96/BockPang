@@ -65,17 +65,19 @@ void ChatServer::read_MSG()
         QString FindPW = line.split('^')[1];
         if(Login == "L")
         {
-            QString ID,PW;
+            QString ID,PW,NICKNAME;
             ID = line.split('^')[2];
             PW = line.split('^')[3];
 
-            QSqlQuery query;
-            query.prepare("SELECT ID,PW FROM USER_DATA WHERE ID = '"+ID+"' AND PW = '"+PW+"';");
-            query.bindValue(":ID",ID);
-            query.bindValue(":PW",PW);
-            if(query.exec() && query.next())
+            QSqlQuery query1,query2;
+            query1.prepare("SELECT ID,PW FROM USER_DATA WHERE ID = '"+ID+"' AND PW = '"+PW+"';");
+            query2.prepare("SELECT NICKNAME FROM USER_DATA WHERE ID = '"+ID+"' AND PW = '"+PW+"';");
+            query1.bindValue(":ID",ID);
+            query1.bindValue(":PW",PW);
+            if(query1.exec() && query1.next() && query2.exec() && query2.next())
             {
-                senderChat-> write("U@LS");
+                QString NICKNAME = query2.value(0).toString();
+                senderChat-> write("U@LS@"+NICKNAME.toUtf8());
             }
             else
                 senderChat->write("U@LF");
@@ -184,7 +186,7 @@ void ChatServer::read_MSG()
                 senderChat->write("U@SPW@F");
         }
     }
-    else if(line.split('^')[0].front() == 'S')
+    else if(line.split('^')[0].front() == 'S')                      // 검색
     {
         QSqlQuery qry;
         QString keyword;
@@ -221,7 +223,7 @@ void ChatServer::read_MSG()
             }
         }
     }
-    else if(line.split('^')[0].front() == 'T')
+    else if(line.split('^')[0].front() == 'T')                      // 카테고리 선택
     {
         QSqlQuery qry;
         QString keyword;
@@ -246,22 +248,23 @@ void ChatServer::read_MSG()
             message.clear();
         }
     }
-    else if(line.split('^')[0].front() == 'M')
+    else if(line.split('^')[0].front() == 'M')                      // 매장 선택
     {
-        if(line.split('^')[1] == 'C')
+        if(line.split('^')[1] == 'C')                               // 카테고리별 메뉴이름 / 소개 / 가격
         {
-            QString Category;
+            QString Category,NUM;
             QSqlQuery qry1,qry2;
+            NUM = line.split('^')[2];
             Category = line.split('^')[3];
-            qry1.prepare("SELECT COUNT(CATEGORY) FROM MENU_TYPE WHERE CATEGORY = "+Category+";");
-            qry2.prepare("SELECT NUM,MENU,INTRODUCE,PAY FROM MENU_TYPE WHERE CATEGORY = "+Category+";");
+            qry1.prepare("SELECT COUNT(CATEGORY) FROM MENU_TYPE_"+NUM+" WHERE CATEGORY = "+Category+";");
+            qry2.prepare("SELECT NUM,MENU,INTRODUCE,PAY FROM MENU_TYPE_"+NUM+" WHERE CATEGORY = "+Category+";");
             qry1.exec();
             qry2.exec();
             QByteArray message;
             message.push_back(QByteArray("MC@"));
             qry1.next();
             message.push_back(qry1.value(0).toByteArray());
-            for(int i=0; i<qry1.value(0).toInt();i++)               // 카테고리별 메뉴이름 / 소개 / 가격
+            for(int i=0; i<qry1.value(0).toInt();i++)
             {
                 qry2.next();
                 message.push_back(QByteArray("@"));
@@ -275,9 +278,68 @@ void ChatServer::read_MSG()
             }
             senderChat->write(message);
         }
+        else if(line.split('^')[1] == 'N')                              // 옵션
+        {
+            QString Opt_num;
+            QSqlQuery qry1,qry2;
+            Opt_num = line.split('^')[2];
+            qry1.prepare("SELECT (COUNT(NUM)-1) FROM MENU_OPTION_1 GROUP BY NUM;");
+            qry2.prepare("SELECT OPTION,PAY FROM MENU_OPTION_1;");
+            qry1.exec();
+            qry2.exec();
+            QByteArray message;
+            message.push_back(QByteArray("MO"));
+            while(qry1.next())
+            {
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(0).toByteArray());
+                for(int i=0; i<=qry1.value(0).toInt();i++)
+                {
+                    qry2.next();
+                    message.push_back(QByteArray("@"));
+                    message.push_back(qry2.value(0).toByteArray());
+                    message.push_back(QByteArray("@"));
+                    message.push_back(qry2.value(1).toByteArray());
+                }
+            }
+            senderChat->write(message);
+        }
+        else if(line.split('^')[1] == 'D')                               // 매장 소개
+        {
+            QString MC_NUM;
+            QSqlQuery qry1;
+            MC_NUM = line.split('^')[2];
+            qry1.prepare("SELECT INTRODUCE,PHONE,PAYMENT,CEO,COMPANY,CEONUMBER,ORIGIN FROM MARCKET_INFO;");
+            qry1.exec();
+            QByteArray message;
+            int size = message.length();
+
+            message.push_back(QByteArray("MD@"));
+            while(qry1.next())
+            {
+                message.push_back(QByteArray("@"));
+                message.push_back(QString::number(size).toUtf8());
+                message.push_back(qry1.value(0).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(1).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(2).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(3).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(4).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(5).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(6).toByteArray());
+                message.push_back(QByteArray("@"));
+            }
+
+            senderChat->write(message);
+        }
         else
         {
-            QSqlQuery qry1,qry2,qry3;
+            QSqlQuery qry1,qry2,qry3;                       // 카테고리 선택시 선택창에 뜨는 정보
             QString keyword;
             keyword = line.split('^')[1];
             qry1.prepare("SELECT MARCKET,SALETIME,MINIMUMPAY,TIP FROM MARCKET_INFO WHERE CATEGORY =  "+keyword+" ;");

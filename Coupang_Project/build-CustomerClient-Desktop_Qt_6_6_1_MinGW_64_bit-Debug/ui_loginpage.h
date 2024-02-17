@@ -24,7 +24,6 @@ QT_BEGIN_NAMESPACE
 class Ui_LoginPage
 {
 public:
-    QVBoxLayout *verticalLayout;
     QLabel *lb_Logo;
     QStackedWidget *stackedWidget;
     QWidget *page;
@@ -61,7 +60,7 @@ public:
     QLineEdit *NAME_FindIDEdit;
     QLineEdit *PHONE_FindIDEdit;
     QPushButton *Btn_FindIDBack;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QLabel *lbl_noticID;
     QLabel *lbl_SID;
@@ -86,19 +85,14 @@ public:
         LoginPage->resize(375, 665);
         LoginPage->setMinimumSize(QSize(375, 665));
         LoginPage->setMaximumSize(QSize(375, 665));
-        verticalLayout = new QVBoxLayout(LoginPage);
-        verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 50, 0, 0);
         lb_Logo = new QLabel(LoginPage);
         lb_Logo->setObjectName("lb_Logo");
-        lb_Logo->setStyleSheet(QString::fromUtf8("\n"
-"border-image: url(:/Image/Join.png);"));
+        lb_Logo->setGeometry(QRect(9, 49, 361, 141));
+        lb_Logo->setStyleSheet(QString::fromUtf8("border-image: url(:/Image/Join.png);"));
         lb_Logo->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(lb_Logo);
-
         stackedWidget = new QStackedWidget(LoginPage);
         stackedWidget->setObjectName("stackedWidget");
+        stackedWidget->setGeometry(QRect(0, 191, 375, 474));
         page = new QWidget();
         page->setObjectName("page");
         Btn_FindPW = new QPushButton(page);
@@ -284,13 +278,13 @@ public:
 ""));
         Btn_FindIDBack->setIconSize(QSize(200, 50));
         Btn_FindIDBack->setFlat(true);
-        widget = new QWidget(page_3);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(60, 190, 261, 121));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(page_3);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(60, 190, 261, 121));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        lbl_noticID = new QLabel(widget);
+        lbl_noticID = new QLabel(layoutWidget);
         lbl_noticID->setObjectName("lbl_noticID");
         QFont font3;
         font3.setPointSize(15);
@@ -300,7 +294,7 @@ public:
 
         verticalLayout_2->addWidget(lbl_noticID);
 
-        lbl_SID = new QLabel(widget);
+        lbl_SID = new QLabel(layoutWidget);
         lbl_SID->setObjectName("lbl_SID");
         QFont font4;
         font4.setPointSize(12);
@@ -373,11 +367,6 @@ public:
         verticalLayout_4->addWidget(lbl_SPW);
 
         stackedWidget->addWidget(page_4);
-
-        verticalLayout->addWidget(stackedWidget);
-
-        verticalLayout->setStretch(0, 2);
-        verticalLayout->setStretch(1, 7);
         stackedWidget->raise();
         lb_Logo->raise();
         QWidget::setTabOrder(ID_Edit, PW_Edit);
@@ -425,7 +414,7 @@ public:
         QObject::connect(PHONE_FindPWEdit, &QLineEdit::returnPressed, Btn_confirmFindPW, qOverload<>(&QPushButton::click));
         QObject::connect(Btn_confirmFindPW, SIGNAL(clicked()), LoginPage, SLOT(RequestSPW()));
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(LoginPage);

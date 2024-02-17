@@ -1,0 +1,10 @@
+release/customermain.o
+release/loginpage.o
+release/main.o
+release/customerclient.o
+release/orderpage.o
+release/qrc_Resource.o
+release/moc_customerclient.o
+release/moc_customermain.o
+release/moc_loginpage.o
+release/moc_orderpage.o

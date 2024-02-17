@@ -39,36 +39,40 @@ namespace {
 struct qt_meta_stringdata_CLASSCustomerMainENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSCustomerMainENDCLASS = QtMocHelpers::stringData(
     "CustomerMain",
-    "readMSG",
+    "disconnected",
     "",
+    "readMSG",
     "sendServerMSG",
     "msg",
     "gotoLogin"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSCustomerMainENDCLASS_t {
-    uint offsetsAndSizes[12];
+    uint offsetsAndSizes[14];
     char stringdata0[13];
-    char stringdata1[8];
+    char stringdata1[13];
     char stringdata2[1];
-    char stringdata3[14];
-    char stringdata4[4];
-    char stringdata5[10];
+    char stringdata3[8];
+    char stringdata4[14];
+    char stringdata5[4];
+    char stringdata6[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSCustomerMainENDCLASS_t::offsetsAndSizes) + ofs), len 
 Q_CONSTINIT static const qt_meta_stringdata_CLASSCustomerMainENDCLASS_t qt_meta_stringdata_CLASSCustomerMainENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "CustomerMain"
-        QT_MOC_LITERAL(13, 7),  // "readMSG"
-        QT_MOC_LITERAL(21, 0),  // ""
-        QT_MOC_LITERAL(22, 13),  // "sendServerMSG"
-        QT_MOC_LITERAL(36, 3),  // "msg"
-        QT_MOC_LITERAL(40, 9)   // "gotoLogin"
+        QT_MOC_LITERAL(13, 12),  // "disconnected"
+        QT_MOC_LITERAL(26, 0),  // ""
+        QT_MOC_LITERAL(27, 7),  // "readMSG"
+        QT_MOC_LITERAL(35, 13),  // "sendServerMSG"
+        QT_MOC_LITERAL(49, 3),  // "msg"
+        QT_MOC_LITERAL(53, 9)   // "gotoLogin"
     },
     "CustomerMain",
-    "readMSG",
+    "disconnected",
     "",
+    "readMSG",
     "sendServerMSG",
     "msg",
     "gotoLogin"
@@ -83,7 +87,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSCustomerMainENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -91,13 +95,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSCustomerMainENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x08,    1 /* Private */,
-       3,    1,   33,    2, 0x08,    2 /* Private */,
-       5,    0,   36,    2, 0x08,    4 /* Private */,
+       1,    0,   38,    2, 0x08,    1 /* Private */,
+       3,    0,   39,    2, 0x08,    2 /* Private */,
+       4,    1,   40,    2, 0x08,    3 /* Private */,
+       6,    0,   43,    2, 0x08,    5 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QByteArray,    4,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QByteArray,    5,
     QMetaType::Void,
 
        0        // eod
@@ -112,6 +118,8 @@ Q_CONSTINIT const QMetaObject CustomerMain::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSCustomerMainENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<CustomerMain, std::true_type>,
+        // method 'disconnected'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'readMSG'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'sendServerMSG'
@@ -129,9 +137,10 @@ void CustomerMain::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<CustomerMain *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->readMSG(); break;
-        case 1: _t->sendServerMSG((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
-        case 2: _t->gotoLogin(); break;
+        case 0: _t->disconnected(); break;
+        case 1: _t->readMSG(); break;
+        case 2: _t->sendServerMSG((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
+        case 3: _t->gotoLogin(); break;
         default: ;
         }
     }
@@ -156,13 +165,13 @@ int CustomerMain::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

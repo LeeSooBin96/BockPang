@@ -204,9 +204,8 @@ public:
         page_2->setObjectName("page_2");
         lb_Logo = new QLabel(page_2);
         lb_Logo->setObjectName("lb_Logo");
-        lb_Logo->setGeometry(QRect(40, 40, 300, 110));
-        lb_Logo->setStyleSheet(QString::fromUtf8("\n"
-"border-image: url(:/Image/Join.png);"));
+        lb_Logo->setGeometry(QRect(70, 65, 250, 80));
+        lb_Logo->setStyleSheet(QString::fromUtf8("border-image: url(:/Image/bok_logo.png);"));
         lb_Logo->setAlignment(Qt::AlignCenter);
         ID_Edit = new QLineEdit(page_2);
         ID_Edit->setObjectName("ID_Edit");
@@ -431,7 +430,7 @@ public:
         Search_Edit->setGeometry(QRect(10, 55, 351, 40));
         Btn_Pizza = new QPushButton(page_6);
         Btn_Pizza->setObjectName("Btn_Pizza");
-        Btn_Pizza->setGeometry(QRect(0, 110, 80, 80));
+        Btn_Pizza->setGeometry(QRect(0, 120, 80, 80));
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/Image/Pizza.png"), QSize(), QIcon::Normal, QIcon::Off);
         Btn_Pizza->setIcon(icon8);
@@ -439,7 +438,7 @@ public:
         Btn_Pizza->setFlat(true);
         Btn_Chicken = new QPushButton(page_6);
         Btn_Chicken->setObjectName("Btn_Chicken");
-        Btn_Chicken->setGeometry(QRect(95, 110, 80, 80));
+        Btn_Chicken->setGeometry(QRect(95, 120, 80, 80));
         QIcon icon9;
         icon9.addFile(QString::fromUtf8(":/Image/Chicken.png"), QSize(), QIcon::Normal, QIcon::Off);
         Btn_Chicken->setIcon(icon9);
@@ -447,7 +446,7 @@ public:
         Btn_Chicken->setFlat(true);
         Btn_Burger = new QPushButton(page_6);
         Btn_Burger->setObjectName("Btn_Burger");
-        Btn_Burger->setGeometry(QRect(195, 110, 80, 80));
+        Btn_Burger->setGeometry(QRect(195, 120, 80, 80));
         QIcon icon10;
         icon10.addFile(QString::fromUtf8(":/Image/Burger.png"), QSize(), QIcon::Normal, QIcon::Off);
         Btn_Burger->setIcon(icon10);
@@ -455,7 +454,7 @@ public:
         Btn_Burger->setFlat(true);
         Btn_Meat = new QPushButton(page_6);
         Btn_Meat->setObjectName("Btn_Meat");
-        Btn_Meat->setGeometry(QRect(290, 110, 80, 80));
+        Btn_Meat->setGeometry(QRect(290, 120, 80, 80));
         QIcon icon11;
         icon11.addFile(QString::fromUtf8(":/Image/Meat.png"), QSize(), QIcon::Normal, QIcon::Off);
         Btn_Meat->setIcon(icon11);
@@ -472,15 +471,21 @@ public:
         Btn_Heart = new QPushButton(page_6);
         Btn_Heart->setObjectName("Btn_Heart");
         Btn_Heart->setGeometry(QRect(95, 585, 80, 80));
+        Btn_Heart->setStyleSheet(QString::fromUtf8("border-image: url(:/Image/heart.png);"));
+        Btn_Heart->setFlat(true);
         Btn_Profile = new QPushButton(page_6);
         Btn_Profile->setObjectName("Btn_Profile");
         Btn_Profile->setGeometry(QRect(290, 585, 80, 80));
+        Btn_Profile->setStyleSheet(QString::fromUtf8("border-image: url(:/Image/profile.png);"));
+        Btn_Profile->setFlat(true);
         Btn_Inquire = new QPushButton(page_6);
         Btn_Inquire->setObjectName("Btn_Inquire");
         Btn_Inquire->setGeometry(QRect(0, 585, 80, 80));
         Btn_List = new QPushButton(page_6);
         Btn_List->setObjectName("Btn_List");
         Btn_List->setGeometry(QRect(195, 585, 80, 80));
+        Btn_List->setStyleSheet(QString::fromUtf8("border-image: url(:/Image/order.png);"));
+        Btn_List->setFlat(true);
         lb_Photo_Marcket1 = new QLabel(page_6);
         lb_Photo_Marcket1->setObjectName("lb_Photo_Marcket1");
         lb_Photo_Marcket1->setGeometry(QRect(0, 210, 371, 121));
@@ -505,7 +510,6 @@ public:
         label->raise();
         lb_Address->raise();
         Btn_Alarm->raise();
-        Btn_Bascket->raise();
         Search_Edit->raise();
         Btn_Pizza->raise();
         Btn_Chicken->raise();
@@ -521,6 +525,7 @@ public:
         lb_Photo_Marcket2->raise();
         lb_Marcket_Info2->raise();
         lb_Marcket_Info1->raise();
+        Btn_Bascket->raise();
         page_8 = new QWidget();
         page_8->setObjectName("page_8");
         Btn_Marcket_Back = new QPushButton(page_8);
@@ -918,10 +923,10 @@ public:
         Btn_Meat->setText(QString());
         Btn_Marcket1->setText(QCoreApplication::translate("CustomerClient", "\354\266\224\354\262\234\352\260\200\352\262\214", nullptr));
         Btn_Marcket2->setText(QCoreApplication::translate("CustomerClient", "\354\266\224\354\262\234\352\260\200\352\262\214", nullptr));
-        Btn_Heart->setText(QCoreApplication::translate("CustomerClient", "\354\260\234", nullptr));
-        Btn_Profile->setText(QCoreApplication::translate("CustomerClient", "\355\224\204\353\241\234\355\225\204", nullptr));
+        Btn_Heart->setText(QString());
+        Btn_Profile->setText(QString());
         Btn_Inquire->setText(QCoreApplication::translate("CustomerClient", "\353\254\270\354\235\230", nullptr));
-        Btn_List->setText(QCoreApplication::translate("CustomerClient", "\353\202\264\354\227\255", nullptr));
+        Btn_List->setText(QString());
         lb_Photo_Marcket1->setText(QCoreApplication::translate("CustomerClient", "\354\202\254\354\247\204", nullptr));
         lb_Photo_Marcket2->setText(QCoreApplication::translate("CustomerClient", "\354\202\254\354\247\204", nullptr));
         lb_Marcket_Info2->setText(QCoreApplication::translate("CustomerClient", "\352\260\200\352\262\214 \354\235\264\353\246\204 \353\260\217 \354\240\225\353\263\264", nullptr));
