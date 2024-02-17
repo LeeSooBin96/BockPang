@@ -22,8 +22,6 @@ ChatServer::~ChatServer()
 
 void ChatServer::incomingConnection(qintptr socketfd)
 {
-    qDebug() << Q_FUNC_INFO;
-
     QTcpSocket *newConnectedChat = new QTcpSocket(this);
 
     newConnectedChat -> setSocketDescriptor(socketfd);
@@ -42,7 +40,7 @@ void ChatServer::read_MSG()
 {
     QTcpSocket* senderChat = (QTcpSocket*)sender();
     QString line = QString::fromUtf8(senderChat->readAll()).trimmed();
-    qDebug() << line;
+
     if(line.size() == 2)
     {
         newchat.append(senderChat);
@@ -186,8 +184,132 @@ void ChatServer::read_MSG()
                 senderChat->write("U@SPW@F");
         }
     }
-}
+    else if(line.split('^')[0].front() == 'S')
+    {
+        QSqlQuery qry;
+        QString keyword;
+        qry.prepare("SELECT NUM,MARCKET,MAINMENU,TIP FROM MARCKET_INFO");
+        qry.exec();
+        QByteArray message;
+        keyword = line.split('^')[1];
+        while(qry.next())
+        {
+            bool ck=false;
+            for(int i=0;i<5;i++)
+            {
+                if(qry.value(i).toString().indexOf(keyword)>=0)
+                {
+                    ck=true;
+                    break;
+                }
+            }
+            if(ck)
+            {
+                message.push_back(QByteArray("S@"));
+                message.push_back(qry.value(0).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry.value(1).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry.value(2).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry.value(3).toByteArray());
+                senderChat->write(message);
+                senderChat->waitForBytesWritten(1000);
+                senderChat->waitForReadyRead(3000);
+                senderChat->readAll();
+                message.clear();
+            }
+        }
+    }
+    else if(line.split('^')[0].front() == 'T')
+    {
+        QSqlQuery qry;
+        QString keyword;
+        keyword = line.split('^')[1];
+        qry.prepare("SELECT NUM,MARCKET,MAINMENU,TIP FROM MARCKET_INFO WHERE CATEGORY = "+keyword+";");
+        qry.exec();
+        QByteArray message;
+        while(qry.next())
+        {
+            message.push_back(QByteArray("T@"));
+            message.push_back(qry.value(0).toByteArray());
+            message.push_back(QByteArray("@"));
+            message.push_back(qry.value(1).toByteArray());
+            message.push_back(QByteArray("@"));
+            message.push_back(qry.value(2).toByteArray());
+            message.push_back(QByteArray("@"));
+            message.push_back(qry.value(3).toByteArray());
+            senderChat->write(message);
+            senderChat->waitForBytesWritten(1000);
+            senderChat->waitForReadyRead(3000);
+            senderChat->readAll();
+            message.clear();
+        }
+    }
+    else if(line.split('^')[0].front() == 'M')
+    {
+        if(line.split('^')[1] == 'C')
+        {
+            QString Category;
+            QSqlQuery qry1,qry2;
+            Category = line.split('^')[3];
+            qry1.prepare("SELECT COUNT(CATEGORY) FROM MENU_TYPE WHERE CATEGORY = "+Category+";");
+            qry2.prepare("SELECT NUM,MENU,INTRODUCE,PAY FROM MENU_TYPE WHERE CATEGORY = "+Category+";");
+            qry1.exec();
+            qry2.exec();
+            QByteArray message;
+            message.push_back(QByteArray("MC@"));
+            qry1.next();
+            message.push_back(qry1.value(0).toByteArray());
+            for(int i=0; i<qry1.value(0).toInt();i++)               // 카테고리별 메뉴이름 / 소개 / 가격
+            {
+                qry2.next();
+                message.push_back(QByteArray("@"));
+                message.push_back(qry2.value(0).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry2.value(1).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry2.value(2).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry2.value(3).toByteArray());
+            }
+            senderChat->write(message);
+        }
+        else
+        {
+            QSqlQuery qry1,qry2,qry3;
+            QString keyword;
+            keyword = line.split('^')[1];
+            qry1.prepare("SELECT MARCKET,SALETIME,MINIMUMPAY,TIP FROM MARCKET_INFO WHERE CATEGORY =  "+keyword+" ;");
+            qry2.prepare("SELECT COUNT(CATEGORY) FROM MENU_CATEGORY_"+keyword+";");
+            qry3.prepare("SELECT CATEGORY FROM MENU_CATEGORY_"+keyword+";");
+            qry1.exec();
+            qry2.exec();
+            qry3.exec();
+            QByteArray message;
+            if(qry1.next() && qry2.next())
+            {
+                message.push_back(QByteArray("M@"));
+                message.push_back(qry1.value(0).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(1).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(2).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry1.value(3).toByteArray());
+                message.push_back(QByteArray("@"));
+                message.push_back(qry2.value(0).toByteArray());
+            }
+            while(qry3.next())
+            {
+                message.push_back(QByteArray("@"));
+                message.push_back(qry3.value(0).toByteArray());
+            }
+            senderChat->write(message);
+        }
 
+    }
+}
 void ChatServer::Chat_disconnected()
 {
     QTcpSocket *Chat = (QTcpSocket*)sender();

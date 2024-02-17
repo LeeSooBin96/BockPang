@@ -27,6 +27,7 @@ signals:
 private slots:
     void read_MSG();
     void Chat_disconnected();
+    // void sendPerformList();
 };
 
 #endif // CHATSERVER_H
