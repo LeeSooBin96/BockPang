@@ -29,6 +29,7 @@ signals:
     void chat_update_ChatCNT(int NO_Users);
     void chat_showMSG(QString msg);
 
+
 private slots:
     void read_MSG();
     void Chat_disconnected();

@@ -12,17 +12,14 @@ SOURCES += \
     customermain.cpp \
     loginpage.cpp \
     main.cpp \
-    customerclient.cpp \
     orderpage.cpp
 
 HEADERS += \
-    customerclient.h \
     customermain.h \
     loginpage.h \
     orderpage.h
 
 FORMS += \
-    customerclient.ui \
     customermain.ui \
     loginpage.ui \
     orderpage.ui

@@ -23,8 +23,8 @@ void CustomerMain::connectServer()
 {
     tcpSocket = new QTcpSocket(this);
 
-    // QHostAddress server("10.10.20.111");
-    QHostAddress server("192.168.0.14");
+    QHostAddress server("10.10.20.111");
+    // QHostAddress server("10.10.20.98");
     qint64 portNum=99999;
 
     tcpSocket->connectToHost(server,portNum);
@@ -40,6 +40,10 @@ void CustomerMain::disconnected()
 //서버로 메시지 송신
 void CustomerMain::sendServerMSG(QByteArray msg)
 {
+    if(msg.front()=='P')
+    {
+        msg.replace("P","P"+myNum.toUtf8()+"^"+Nickname.toUtf8());
+    }
     tcpSocket->write(msg);
     qDebug()<<"서버로 전송된 메시지 "<<msg;
 }
@@ -110,12 +114,21 @@ void CustomerMain::readMSG()
     {
         order->PrintMenuOPtion(msg.split('@'));
     }
+    else if(msg.split('@')[0]=="P") //주문 관련 수신 메시지
+    {
+        order->ArriveResultOrder(msg.split('@')[1]);
+    }
     else if(msg.split('@')[0]=="U") //로그인 관련 수신 메시지
     {
         QString ck=msg.split('@')[1];
         //로그인 성공 여부 판단
         if(ck=="LS")
         {
+            if(msg.split('@')[3]=="F")
+            {
+                QMessageBox::critical(this,"경고","이미 다른기기에서 로그인된 계정입니다.",QMessageBox::Ok);
+                return;
+            }
             Nickname=msg.split('@')[2]; //로그인된 유저 닉네임 저장
             qDebug()<<Nickname;
             // ui->mainStack->setCurrentIndex(1); //넘어가는 화면 만들까

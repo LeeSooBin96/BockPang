@@ -21,7 +21,7 @@ void MarcketMain::connectServer()
     qint64 portNum=99999;
 
     tcpSocket->connectToHost(server,portNum);
-    tcpSocket->write("M1");
+    tcpSocket->write("MO^1");
 
     connect(tcpSocket,SIGNAL(readyRead()),this,SLOT(readMSG()));
     connect(tcpSocket,SIGNAL(disconnected()),tcpSocket,SLOT(deleteLater()));

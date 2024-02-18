@@ -7,7 +7,7 @@
 ChatServer::ChatServer(QObject *parent): QTcpServer(parent)
 {
     QSqlDatabase DB = QSqlDatabase::addDatabase("QSQLITE");
-    DB.setDatabaseName("/Users/Aiot/Documents/Bokpang");
+    DB.setDatabaseName("/Users/IOT/Desktop/Important/Coupang_Project/Bokpang");
 
     if(!DB.open())
         qDebug() << "fail Database";
@@ -16,10 +16,6 @@ ChatServer::ChatServer(QObject *parent): QTcpServer(parent)
     //고객센터 오픈
     center=new GarbageCenter();
     center->hide();
-
-    QSqlQuery qry1;
-    qry1.prepare("UPDATE MARCKET_INFO SET FLAG = 'F' WHERE NUM = 1;");
-    qry1.exec();
 
     connect(center,SIGNAL(signal_sendMSG(QString,QString)),this,SLOT(send_MSG(QString,QString)));
 }
@@ -51,12 +47,21 @@ void ChatServer::read_MSG()
     QTcpSocket* senderChat = (QTcpSocket*)sender();
     QString line = QString::fromUtf8(senderChat->readAll()).trimmed();
 
+    // if(line.size() == 2)
+    // {
+    //     newchat.append(senderChat);
+
+    //     int index = newchat.indexOf(senderChat);
+    //     senderChat -> write(QString::number(index).toUtf8());
+    //     qDebug() << index;
+    // }
     if(line.size() == 1 )
     {
         newchat.append(senderChat);
 
         int index = newchat.indexOf(senderChat);
         senderChat -> write(QString::number(index).toUtf8());
+        // qDebug() << index;
     }
     else if(line.split('^')[0].front() == 'Q') //고객 문의창으로
     {
@@ -337,10 +342,13 @@ void ChatServer::read_MSG()
             qry1.prepare("SELECT INTRODUCE,PHONE,PAYMENT,CEO,COMPANY,CEONUMBER,ORIGIN FROM MARCKET_INFO;");
             qry1.exec();
             QByteArray message;
+            // int size = message.length();
 
             message.push_back(QByteArray("MD@"));
             while(qry1.next())
             {
+                // message.push_back(QByteArray("@"));
+                // message.push_back(QString::number(size).toUtf8());
                 message.push_back(qry1.value(0).toByteArray());
                 message.push_back(QByteArray("@"));
                 message.push_back(qry1.value(1).toByteArray());
@@ -356,19 +364,23 @@ void ChatServer::read_MSG()
                 message.push_back(qry1.value(6).toByteArray());
                 message.push_back(QByteArray("@"));
             }
+            // int size = message.size();
+            // message.push_front("MD@"+QString::number(size).toUtf8()+"@");
             senderChat->write(message);
         }
-        else if(line.split('^')[0] == "MO")
+        else if(line.split('^')[1] == "MO")
         {
             newchat.append(senderChat);
 
             int index = newchat.indexOf(senderChat);
             senderChat -> write(QString::number(index).toUtf8());
+            qDebug() << index;
 
             QString Flag;
             QSqlQuery qry1;
-            Flag = line.split('^')[1];
+            Flag = line.split('^')[2];
             qry1.prepare("SELECT NUM,FLAG FROM MARCKET_INFO WHERE NUM = "+Flag+";");
+            qDebug() << &qry1;
 
             QByteArray message;
             if(qry1.exec() && qry1.next())
@@ -378,13 +390,18 @@ void ChatServer::read_MSG()
                 if(FLAG == "F")
                 {
                     qry1.prepare("UPDATE MARCKET_INFO SET FLAG = 'T' WHERE NUM = "+Flag+";");
-                    qry1.exec();
 
                 }
+                else if(FLAG == "T")
+                {
+                    qry1.prepare("UPDATE MARCKET_INFO SET FLAG = 'F' WHERE NUM = "+Flag+";");
+                }
                 senderChat -> write(NUM.toUtf8());
+                connect(senderChat,SIGNAL(dis))
+                qDebug() << FLAG;
+                qDebug() << NUM;
             }
         }
-
         else
         {
             QSqlQuery qry1,qry2,qry3;                       // 카테고리 선택시 선택창에 뜨는 정보
@@ -416,32 +433,6 @@ void ChatServer::read_MSG()
                 message.push_back(qry3.value(0).toByteArray());
             }
             senderChat->write(message);
-        }
-
-    }
-    else if(line.split('^')[0].front() == 'P')                              // 주문 정보 저장 및 주문 번호 전송
-    {
-        QSqlQuery qry1,qry2;
-        QString NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT,ORDER_NUM;
-        NICKNAME = line.split('^')[1];
-        MARCKET_NUM = line.split('^')[2];
-        EA = line.split('^')[3];
-        MENU = line.split('^')[4];
-        TOTAL = line.split('^')[5];
-        PAYMENT = line.split('^')[6];
-
-        qry1.prepare("INSERT INTO ORDER_INFO_1 (NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT) VALUES ('"+NICKNAME+"',"+MARCKET_NUM+","+EA+",'"+MENU+"',"+TOTAL+","+PAYMENT+");");
-        qry2.prepare("SELECT ORDER_NUM FROM ORDER_INFO_1 WHERE NICKNAME = '"+NICKNAME+"';");
-        qry1.exec();
-        qry2.exec();
-        if(qry2.next())
-        {
-            QString ORDER_NUM = qry2.value(0).toString();
-            senderChat-> write("P@"+ORDER_NUM.toUtf8());
-        }
-        else
-        {
-            senderChat-> write("P@F");
         }
 
     }
