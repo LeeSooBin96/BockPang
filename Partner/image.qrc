@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>map.png</file>
+        <file>bok_logo.png</file>
+    </qresource>
+</RCC>
