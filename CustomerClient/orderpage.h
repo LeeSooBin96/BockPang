@@ -2,10 +2,19 @@
 #define ORDERPAGE_H
 
 #include <QWidget>
-// #include <QScrollArea>
 #include <QGroupBox>
 #include <QRadioButton>
 #include <QListWidgetItem>
+#include <QMessageBox>
+
+
+//주문 정보 저장할 구조체 만들자
+struct OrderedMenu{
+    qint64 marketNum; //가게 번호
+    QVector<QString> menu; //메뉴 이름
+    QMap<QString,qint64> price;  //가격
+    QMap<QString,QString> option; //메뉴별 옵션 내용
+};
 
 namespace Ui {
 class OrderPage;
@@ -36,10 +45,12 @@ private:
     Ui::OrderPage *ui;
     QString myCode; //서버와 통신시 사용할 코드 ( 요청코드+클라이언트번호 )
     QVector<int> mNumlist; //목록에 있는 가게번호 저장
+    QVector<QString> mStatelist; //목록에 있는 가게 오픈상태 저장
     QVector<int> settedCateNum; //요청된 카테고리 번호 배열 -- 중복 요청 방지
     QList<QListWidget*> menuLWlist; //메뉴 리스트위젯 모음
     quint64 selectedmNum,selectedmcNum; //선택된 가게 번호,메뉴 카테고리번호 저장
     QList<quint64> expageNum; //이전 페이지 인덱스 저장 - 이전 화면으로 돌아갈때 사용
+    OrderedMenu shopCart; //장바구니(주문정보)
 
 private slots:
     void SendSearchKey(); //서버에 검색어 전송
@@ -55,7 +66,8 @@ private slots:
     void gotoHome(); //홈화면으로 이동
     void gotoExPage(); //이전 화면으로 이동
     void gotoQuestionPage(); //고객 문의 창으로 이동
-
+    void gotoNotice(); //알림 목록 창으로
+    void gotoShopCart(); //장바구니 화면으로 이동
 };
 
 #endif // ORDERPAGE_H

@@ -9,20 +9,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    customermain.cpp \
-    loginpage.cpp \
     main.cpp \
-    orderpage.cpp
+    marcketmain.cpp
 
 HEADERS += \
-    customermain.h \
-    loginpage.h \
-    orderpage.h
+    marcketmain.h
 
 FORMS += \
-    customermain.ui \
-    loginpage.ui \
-    orderpage.ui
+    marcketmain.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -30,4 +24,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    Resource.qrc
+    IMG.qrc

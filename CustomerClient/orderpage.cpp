@@ -9,6 +9,13 @@ OrderPage::OrderPage(QWidget *parent,QString *code)
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
 
+    ui->redPoint->hide();
+    ui->TWShoplist->setColumnWidth(0,20);
+    ui->TWShoplist->setColumnWidth(1,30);
+    ui->TWShoplist->setColumnWidth(2,180);
+    ui->TWShoplist->setColumnWidth(3,50);
+    ui->TWShoplist->setColumnWidth(4,30);
+
     //확인용
     // selectedmNum=1;
     // QString list=QString("코드@가게이름@운영시간@최소주문@배달팁@2@카테고리1@카테고리2");
@@ -37,12 +44,14 @@ void OrderPage::SendSearchKey()
         ui->stackedWidget->setCurrentIndex(1);
         ui->listWidget->clear();
         mNumlist.clear();
+        mStatelist.clear();
     }
 }
 //검색 결과 출력
 void OrderPage::PrintResultSearch(QStringList slist)
 {
     //받아온 데이터 : S@(가게번호)@(해당하는 가게이름)@(대표메뉴)@(배달팁)
+    // mStatelist.push_back(slist[5]); //가게 오픈 상태 저장
     mNumlist.push_back(slist[1].toInt());
     //가게 이름, 대표 메뉴, 배달팁 출력
     QListWidgetItem* item= new QListWidgetItem;
@@ -81,10 +90,12 @@ void OrderPage::SendCateNum()
     }
     ui->listWidget_2->clear();
     mNumlist.clear();
+    mStatelist.clear();
 }
 //카테고리 목록 출력
 void OrderPage::PrintSelectedCate(QStringList clist)
 {
+    // mStatelist.push_back(clist[5]); //가게 오픈상태 저장
     mNumlist.push_back(clist[1].toInt());
     QListWidgetItem* item= new QListWidgetItem;
     item->setIcon(QIcon(":/resources/"+clist[1]+"_board.png"));
@@ -99,14 +110,21 @@ void OrderPage::PrintSelectedCate(QStringList clist)
 //서버에 가게 번호 전송
 void OrderPage::SendMarcketNum(const QModelIndex &index)
 {
-    selectedmNum=mNumlist[index.row()];
-    QByteArray msg="M"+myCode.toUtf8()+"^"+QString::number(selectedmNum).toUtf8();
-    emit signal_sendMSG(msg);
+    // if(mStatelist[index.row()]=="F") //가게 오픈 상태 검사
+    // {
+    //     QMessageBox::information(this,"알림","매장 오픈 준비중입니다.",QMessageBox::Ok);
+    // }
+    // else
+    // {
+        selectedmNum=mNumlist[index.row()];
+        QByteArray msg="M"+myCode.toUtf8()+"^"+QString::number(selectedmNum).toUtf8();
+        emit signal_sendMSG(msg);
 
-    expageNum.append(ui->stackedWidget->currentIndex()); //이전으로 기능을 위해 인덱스 저장
-    ui->stackedWidget->setCurrentIndex(3);
-    ui->tabWidget->setCurrentIndex(0);
-    ui->lblBoarderIMG->setPixmap(QPixmap(":/resources/"+QString::number(selectedmNum)+"_board.png"));
+        expageNum.append(ui->stackedWidget->currentIndex()); //이전으로 기능을 위해 인덱스 저장
+        ui->stackedWidget->setCurrentIndex(3);
+        ui->tabWidget->setCurrentIndex(0);
+        ui->lblBoarderIMG->setPixmap(QPixmap(":/resources/"+QString::number(selectedmNum)+"_board.png"));
+    // }
 }
 
 //가게 정보 출력
@@ -205,7 +223,16 @@ void OrderPage::SendMenuNum(QListWidgetItem *item)
 //메뉴 옵션 내용 출력
 void OrderPage::PrintMenuOPtion(QStringList oplist)
 {
-    qDebug()<<oplist.size();
+    //기존 옵션 리스트 삭제해야함
+    // ui->OPVlayout->itemAt(int) //
+    if(ui->OPVlayout->count()!=0) //테스트 못해봄 안되면 삭제하자
+    {
+        for(int i=ui->OPVlayout->count()-1;i>0;i--)
+        {
+            ui->OPVlayout->removeItem(ui->OPVlayout->itemAt(i));
+        }
+    }
+    // qDebug()<<oplist.size();
     int index=2;
     static qint64 opNum=1;
     while(true)
@@ -270,6 +297,14 @@ void OrderPage::ArriveQuestionAnswer(QString msg)
     QListWidgetItem* item=new QListWidgetItem(msg);
     item->setTextAlignment(Qt::AlignLeft);
     ui->LWQuestion->addItem(item);
+
+    if(ui->stackedWidget->currentIndex()!=5)
+    {
+        //알림 기능 추가
+        item=new QListWidgetItem("고객센터로부터 메시지가 도착했습니다.\n고객센터 :"+msg);
+        ui->LWNoticelist->addItem(item);
+        ui->redPoint->show();
+    }
 }
 //고객센터 문의 송신
 void OrderPage::SendQuestion()
@@ -306,6 +341,17 @@ void OrderPage::gotoQuestionPage() //고객 문의 창으로
     ui->LWQuestion->addItem(item);
     emit signal_sendMSG("Q"+myCode.toUtf8()+"^");
 }
+void OrderPage::gotoNotice() //알림 목록 창으로
+{
+    ui->stackedWidget->setCurrentIndex(6);
+    ui->redPoint->hide();
+}
+void OrderPage::gotoShopCart() //장바구니 화면으로
+{
+    expageNum.append(ui->stackedWidget->currentIndex());   //이전 페이지 정보 저장
+    ui->stackedWidget->setCurrentIndex(7);
+}
+
 
 
 

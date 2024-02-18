@@ -24,7 +24,7 @@ void CustomerMain::connectServer()
     tcpSocket = new QTcpSocket(this);
 
     // QHostAddress server("10.10.20.111");
-    QHostAddress server("192.168.0.14");
+    QHostAddress server("10.10.20.98");
     qint64 portNum=99999;
 
     tcpSocket->connectToHost(server,portNum);
@@ -116,6 +116,11 @@ void CustomerMain::readMSG()
         //로그인 성공 여부 판단
         if(ck=="LS")
         {
+            if(msg.split('@')[3]=="F")
+            {
+                QMessageBox::critical(this,"경고","이미 다른기기에서 로그인된 계정입니다.",QMessageBox::Ok);
+                return;
+            }
             Nickname=msg.split('@')[2]; //로그인된 유저 닉네임 저장
             qDebug()<<Nickname;
             // ui->mainStack->setCurrentIndex(1); //넘어가는 화면 만들까

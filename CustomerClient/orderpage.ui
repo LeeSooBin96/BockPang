@@ -44,7 +44,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QPushButton" name="Btn_Burger_3">
@@ -63,7 +63,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="Resource.qrc">
          <normaloff>:/Image/Burger.png</normaloff>:/Image/Burger.png</iconset>
        </property>
        <property name="iconSize">
@@ -152,7 +152,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="Resource.qrc">
          <normaloff>:/Image/Alarm.png</normaloff>:/Image/Alarm.png</iconset>
        </property>
        <property name="iconSize">
@@ -229,7 +229,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Image/ad2.png</pixmap>
+        <pixmap resource="Resource.qrc">:/Image/ad2.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -322,7 +322,7 @@ background-color: rgb(0, 0, 0);</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="Resource.qrc">
          <normaloff>:/Image/Pizza.png</normaloff>:/Image/Pizza.png</iconset>
        </property>
        <property name="iconSize">
@@ -369,7 +369,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="Resource.qrc">
          <normaloff>:/Image/Chicken.png</normaloff>:/Image/Chicken.png</iconset>
        </property>
        <property name="iconSize">
@@ -395,7 +395,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Image/ad1.png</pixmap>
+        <pixmap resource="Resource.qrc">:/Image/ad1.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -420,7 +420,7 @@ border-radius:10px;
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="Resource.qrc">
          <normaloff>:/Image/Meat.png</normaloff>:/Image/Meat.png</iconset>
        </property>
        <property name="iconSize">
@@ -481,6 +481,35 @@ background-color: rgb(0, 0, 0);</string>
         <bool>true</bool>
        </property>
       </widget>
+      <widget class="QLabel" name="redPoint">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>0</y>
+         <width>20</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 0, 0);
+background-color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>●</string>
+       </property>
+      </widget>
       <zorder>label</zorder>
       <zorder>lb_Photo_Marcket1</zorder>
       <zorder>Btn_Marcket1</zorder>
@@ -500,6 +529,7 @@ background-color: rgb(0, 0, 0);</string>
       <zorder>Btn_Profile</zorder>
       <zorder>Btn_List</zorder>
       <zorder>Btn_Heart</zorder>
+      <zorder>redPoint</zorder>
      </widget>
      <widget class="QWidget" name="page_5">
       <widget class="QPushButton" name="Btn_Marcket_home_2">
@@ -1019,8 +1049,8 @@ background-color: rgb(153, 153, 153);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>375</width>
-                 <height>461</height>
+                 <width>377</width>
+                 <height>460</height>
                 </rect>
                </property>
                <attribute name="label">
@@ -1107,7 +1137,7 @@ background-color: rgb(153, 153, 153);</string>
                  <x>0</x>
                  <y>0</y>
                  <width>373</width>
-                 <height>489</height>
+                 <height>488</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1792,6 +1822,427 @@ background-color: rgb(255, 255, 255);</string>
        </property>
       </widget>
      </widget>
+     <widget class="QWidget" name="page_10">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);</string>
+      </property>
+      <widget class="QListWidget" name="LWNoticelist">
+       <property name="geometry">
+        <rect>
+         <x>15</x>
+         <y>50</y>
+         <width>350</width>
+         <height>601</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius:15px;
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Btn_Marcket_Back_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Image/Back_White.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_21">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>-10</y>
+         <width>81</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Image/Alarm.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <zorder>label_21</zorder>
+      <zorder>LWNoticelist</zorder>
+      <zorder>Btn_Marcket_Back_6</zorder>
+     </widget>
+     <widget class="QWidget" name="page_11">
+      <widget class="QLabel" name="label_22">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>50</y>
+         <width>375</width>
+         <height>341</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 0, 0);
+border-radius:10px;
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Btn_Marcket_Back_7">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_23">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>50</y>
+         <width>48</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Image/Baskcet_2.png);
+background-color: rgb(0, 0, 0);
+border-radius:10px
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="TWShoplist">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>60</y>
+         <width>311</width>
+         <height>321</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius:15px;
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustIgnored</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="horizontalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>10</number>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>20</number>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderStretchLastSection">
+        <bool>false</bool>
+       </attribute>
+       <row>
+        <property name="text">
+         <string>New Row</string>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>NO</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>IMG</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>MENU</string>
+        </property>
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>PRICE</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignTrailing|AlignVCenter</set>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>DEL</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="Line" name="line_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>480</y>
+         <width>341</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>620</y>
+         <width>371</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);
+border-radius:10px;
+</string>
+       </property>
+       <property name="text">
+        <string>주문하기</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>400</y>
+         <width>321</width>
+         <height>38</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="3,7">
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_25">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>총 가격</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_26">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+       <zorder>label_26</zorder>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>500</y>
+         <width>341</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_17">
+        <item>
+         <widget class="QLabel" name="label_27">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>요청사항</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEdit">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>450</y>
+         <width>231</width>
+         <height>27</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_15">
+        <item>
+         <widget class="QLabel" name="label_24">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>결제 방법 선택</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="ComboBoxPayWay">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="frame">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>카드</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>계좌이체</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>만나서 결제</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
      <widget class="QWidget" name="page_3">
       <widget class="QLabel" name="lb_Menu_name3">
        <property name="geometry">
@@ -2296,7 +2747,9 @@ background-color: rgb(255, 255, 255);</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resource.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>Btn_Pizza_1</sender>
@@ -2666,6 +3119,118 @@ background-color: rgb(255, 255, 255);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Btn_Marcket_Back_6</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoHome()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>22</x>
+     <y>27</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>30</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Alarm</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoNotice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>275</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>-7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Marcket_Back_7</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoExPage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>17</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>-10</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Bascket</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoShopCart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>345</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>477</x>
+     <y>31</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Marcket_Bascket_2</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoShopCart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>338</x>
+     <y>26</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>26</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Marcket_Bascket</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoShopCart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>358</x>
+     <y>32</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Marcket_Bascket_3</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>gotoShopCart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>352</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>58</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SendSearchKey()</slot>
@@ -2677,5 +3242,7 @@ background-color: rgb(255, 255, 255);</string>
   <slot>SendMarcketNumforDetail(int)</slot>
   <slot>gotoQuestionPage()</slot>
   <slot>SendQuestion()</slot>
+  <slot>gotoNotice()</slot>
+  <slot>gotoShopCart()</slot>
  </slots>
 </ui>
