@@ -397,6 +397,7 @@ void ChatServer::read_MSG()
                     qry1.prepare("UPDATE MARCKET_INFO SET FLAG = 'F' WHERE NUM = "+Flag+";");
                 }
                 senderChat -> write(NUM.toUtf8());
+                connect(senderChat,SIGNAL(dis))
                 qDebug() << FLAG;
                 qDebug() << NUM;
             }
