@@ -11,17 +11,14 @@ CONFIG += c++17
 
 SOURCES += \
     chatserver.cpp \
-    garbagecenter.cpp \
     main.cpp \
     server.cpp
 
 HEADERS += \
     chatserver.h \
-    garbagecenter.h \
     server.h
 
 FORMS += \
-    garbagecenter.ui \
     server.ui
 
 # Default rules for deployment.
