@@ -17,6 +17,10 @@ ChatServer::ChatServer(QObject *parent): QTcpServer(parent)
     center=new GarbageCenter();
     center->hide();
 
+    QSqlQuery qry1;
+    qry1.prepare("UPDATE MARCKET_INFO SET FLAG = 'F' WHERE NUM = 1;");
+    qry1.exec();
+
     connect(center,SIGNAL(signal_sendMSG(QString,QString)),this,SLOT(send_MSG(QString,QString)));
 }
 
@@ -47,21 +51,12 @@ void ChatServer::read_MSG()
     QTcpSocket* senderChat = (QTcpSocket*)sender();
     QString line = QString::fromUtf8(senderChat->readAll()).trimmed();
 
-    // if(line.size() == 2)
-    // {
-    //     newchat.append(senderChat);
-
-    //     int index = newchat.indexOf(senderChat);
-    //     senderChat -> write(QString::number(index).toUtf8());
-    //     qDebug() << index;
-    // }
     if(line.size() == 1 )
     {
         newchat.append(senderChat);
 
         int index = newchat.indexOf(senderChat);
         senderChat -> write(QString::number(index).toUtf8());
-        // qDebug() << index;
     }
     else if(line.split('^')[0].front() == 'Q') //고객 문의창으로
     {
@@ -102,6 +97,7 @@ void ChatServer::read_MSG()
                     return;
                 }
                 qmap_userList[senderChat]=NICKNAME;
+
 
                 senderChat-> write("U@LS@"+NICKNAME.toUtf8()+"@S");
             }
@@ -342,13 +338,10 @@ void ChatServer::read_MSG()
             qry1.prepare("SELECT INTRODUCE,PHONE,PAYMENT,CEO,COMPANY,CEONUMBER,ORIGIN FROM MARCKET_INFO;");
             qry1.exec();
             QByteArray message;
-            // int size = message.length();
 
             message.push_back(QByteArray("MD@"));
             while(qry1.next())
             {
-                // message.push_back(QByteArray("@"));
-                // message.push_back(QString::number(size).toUtf8());
                 message.push_back(qry1.value(0).toByteArray());
                 message.push_back(QByteArray("@"));
                 message.push_back(qry1.value(1).toByteArray());
@@ -364,23 +357,21 @@ void ChatServer::read_MSG()
                 message.push_back(qry1.value(6).toByteArray());
                 message.push_back(QByteArray("@"));
             }
-            // int size = message.size();
-            // message.push_front("MD@"+QString::number(size).toUtf8()+"@");
             senderChat->write(message);
         }
-        else if(line.split('^')[1] == "MO")
+        else if(line.split('^')[0] == "MO")                                     // 매장
         {
             newchat.append(senderChat);
 
+
             int index = newchat.indexOf(senderChat);
             senderChat -> write(QString::number(index).toUtf8());
-            qDebug() << index;
 
             QString Flag;
             QSqlQuery qry1;
-            Flag = line.split('^')[2];
+            Flag = line.split('^')[1];
+            qmap_marcketList[Flag] = senderChat;
             qry1.prepare("SELECT NUM,FLAG FROM MARCKET_INFO WHERE NUM = "+Flag+";");
-            qDebug() << &qry1;
 
             QByteArray message;
             if(qry1.exec() && qry1.next())
@@ -390,17 +381,13 @@ void ChatServer::read_MSG()
                 if(FLAG == "F")
                 {
                     qry1.prepare("UPDATE MARCKET_INFO SET FLAG = 'T' WHERE NUM = "+Flag+";");
+                    qry1.exec();
 
                 }
-                else if(FLAG == "T")
-                {
-                    qry1.prepare("UPDATE MARCKET_INFO SET FLAG = 'F' WHERE NUM = "+Flag+";");
-                }
                 senderChat -> write(NUM.toUtf8());
-                qDebug() << FLAG;
-                qDebug() << NUM;
             }
         }
+
         else
         {
             QSqlQuery qry1,qry2,qry3;                       // 카테고리 선택시 선택창에 뜨는 정보
@@ -433,7 +420,74 @@ void ChatServer::read_MSG()
             }
             senderChat->write(message);
         }
+    }
+    else if(line.split('^')[0].front() == 'P')                              // 주문 정보 저장 및 주문 번호 전송
+    {
+        QSqlQuery qry1,qry2;
+        QString keyword,NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT;
 
+        // keyword = line.split('^')[0];
+        NICKNAME = line.split('^')[1];
+        MARCKET_NUM = line.split('^')[2];
+        EA = line.split('^')[3];
+        MENU = line.split('^')[4];
+        TOTAL = line.split('^')[5];
+        PAYMENT = line.split('^')[6];
+
+        qDebug() << line;
+
+        qry1.prepare("INSERT INTO ORDER_INFO_1 (NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT) VALUES ('"+NICKNAME+"','"+MARCKET_NUM+"','"+EA+"','"+MENU+"','"+TOTAL+"','"+PAYMENT+"');");
+        qry1.bindValue(":NICKNAME",NICKNAME);
+        qry1.bindValue(":MARCKET_NUM",MARCKET_NUM);
+        qry1.bindValue(":EA",EA);
+        qry1.bindValue(":MENU",MENU);
+        qry1.bindValue(":TOTAL",TOTAL);
+        qry1.bindValue(":PAYMENT",PAYMENT);
+        qry1.exec();
+        int ORDER_NUM = rand()%100;
+
+        qmap_orderList[QString::number(ORDER_NUM)] = senderChat;
+        line.replace(line.split('^')[0],"P^"+QString::number(ORDER_NUM).toUtf8());
+        qmap_marcketList[MARCKET_NUM]->write(line.toUtf8());
+
+    }
+    else if(line.split('^').front() == 'O')
+    {
+        QSqlQuery qry1,qry2;
+        QString keyword,NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT;
+
+        if(line.split('^')[1] == 'S')
+        {
+            // keyword = line.split('^')[0];
+            // NICKNAME = line.split('^')[1];
+            // MARCKET_NUM = line.split('^')[2];
+            // EA = line.split('^')[3];
+            // MENU = line.split('^')[4];
+            // TOTAL = line.split('^')[5];
+            // PAYMENT = line.split('^')[6];
+
+            // qry1.prepare("INSERT INTO ORDER_INFO_1 (NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT) VALUES ('"+NICKNAME+"','"+MARCKET_NUM+"','"+EA+"','"+MENU+"','"+TOTAL+"','"+PAYMENT+"');");
+            // qry2.prepare("SELECT ORDER_NUM FROM ORDER_INFO_1 WHERE NICKNAME = '"+NICKNAME+"';");
+            // qry1.bindValue(":NICKNAME",NICKNAME);
+            // qry1.bindValue(":MARCKET_NUM",MARCKET_NUM);
+            // qry1.bindValue(":EA",EA);
+            // qry1.bindValue(":MENU",MENU);
+            // qry1.bindValue(":TOTAL",TOTAL);
+            // qry1.bindValue(":PAYMENT",PAYMENT);
+            // qry1.exec();
+            // // qry2.exec();
+
+            QString ORDER_NUM = line.split('^')[2];
+            // // senderChat -> write("P@"+ORDER_NUM.toUtf8());
+            qmap_orderList[ORDER_NUM] -> write("P@"+ORDER_NUM.toUtf8());
+        }
+        else
+        {
+            QString ORDER_NUM = line.split('^')[2];
+            qmap_orderList[ORDER_NUM] -> write("P@F");
+            qry1.prepare("DELETE FROM ORER_INFO_1 WHERE ORDER_NUM = "+ORDER_NUM);
+            qry1.exec();
+        }
     }
 }
 //고객센터 문의 응답 내용 전송
