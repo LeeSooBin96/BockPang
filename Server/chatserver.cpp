@@ -7,7 +7,7 @@
 ChatServer::ChatServer(QObject *parent): QTcpServer(parent)
 {
     QSqlDatabase DB = QSqlDatabase::addDatabase("QSQLITE");
-    DB.setDatabaseName("/Users/HAPPYFAMILY/Documents/Bokpang");
+    DB.setDatabaseName("/Users/Aiot/Documents/Bokpang");
 
     if(!DB.open())
         qDebug() << "fail Database";
@@ -96,9 +96,14 @@ void ChatServer::read_MSG()
             if(query1.exec() && query1.next() && query2.exec() && query2.next())
             {
                 NICKNAME = query2.value(0).toString();
+                if(qmap_userList.values().contains(NICKNAME)) //이미 등록된 소켓 있으면
+                {
+                    senderChat-> write("U@LS@"+NICKNAME.toUtf8()+"@F");
+                    return;
+                }
                 qmap_userList[senderChat]=NICKNAME;
 
-                senderChat-> write("U@LS@"+NICKNAME.toUtf8());
+                senderChat-> write("U@LS@"+NICKNAME.toUtf8()+"@S");
             }
             else
                 senderChat->write("U@LF");
