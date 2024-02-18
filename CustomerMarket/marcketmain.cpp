@@ -17,7 +17,8 @@ void MarcketMain::connectServer()
 {
     tcpSocket = new QTcpSocket(this);
 
-    QHostAddress server("10.10.20.111");
+    // QHostAddress server("10.10.20.111");
+    QHostAddress server("192.168.0.14");
     qint64 portNum=99999;
 
     tcpSocket->connectToHost(server,portNum);

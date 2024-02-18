@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>resources/logo.png</file>
         <file>resources/market_logo.png</file>
+        <file>resources/bok_logo.png</file>
     </qresource>
 </RCC>

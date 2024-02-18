@@ -1049,8 +1049,8 @@ background-color: rgb(153, 153, 153);</string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>377</width>
-                 <height>460</height>
+                 <width>375</width>
+                 <height>461</height>
                 </rect>
                </property>
                <attribute name="label">
@@ -1137,7 +1137,7 @@ background-color: rgb(153, 153, 153);</string>
                  <x>0</x>
                  <y>0</y>
                  <width>373</width>
-                 <height>488</height>
+                 <height>489</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1462,7 +1462,8 @@ background-color: rgb(153, 153, 153);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
+        <string notr="true">border-image: url(:/Image/Back_2.png);
+background-color: rgba(255, 255, 255,0);</string>
        </property>
        <property name="text">
         <string/>
@@ -1483,7 +1484,7 @@ background-color: rgb(153, 153, 153);</string>
          <x>-10</x>
          <y>-1</y>
          <width>391</width>
-         <height>631</height>
+         <height>601</height>
         </rect>
        </property>
        <property name="lineWidth">
@@ -1501,7 +1502,7 @@ background-color: rgb(153, 153, 153);</string>
           <x>0</x>
           <y>0</y>
           <width>395</width>
-          <height>629</height>
+          <height>599</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="OPVlayout" stretch="0">
@@ -1681,6 +1682,53 @@ border-radius:10px;
         <string>장바구니 담기</string>
        </property>
       </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>590</y>
+         <width>351</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="3,7">
+        <item>
+         <widget class="QLabel" name="label_28">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);</string>
+          </property>
+          <property name="text">
+           <string>선택된 가격 :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblSelectedPrice">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <zorder>layoutWidget</zorder>
       <zorder>scrollArea_2</zorder>
       <zorder>Btn_Marcket_Back_4</zorder>
       <zorder>pushButton</zorder>
@@ -1981,6 +2029,11 @@ border-radius:10px
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">border-radius:15px;
 background-color: rgb(255, 255, 255);</string>
@@ -2003,6 +2056,9 @@ background-color: rgb(255, 255, 255);</string>
        <property name="horizontalScrollMode">
         <enum>QAbstractItemView::ScrollPerPixel</enum>
        </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
        <attribute name="horizontalHeaderMinimumSectionSize">
         <number>10</number>
        </attribute>
@@ -2018,11 +2074,6 @@ background-color: rgb(255, 255, 255);</string>
        <attribute name="verticalHeaderStretchLastSection">
         <bool>false</bool>
        </attribute>
-       <row>
-        <property name="text">
-         <string>New Row</string>
-        </property>
-       </row>
        <column>
         <property name="text">
          <string>NO</string>
@@ -2095,7 +2146,7 @@ border-radius:10px;
         <string>주문하기</string>
        </property>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>50</x>
@@ -2125,7 +2176,7 @@ border-radius:10px;
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_26">
+         <widget class="QLabel" name="lblTotalPrice">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -2144,9 +2195,8 @@ background-color: rgba(255, 255, 255,0);</string>
          </widget>
         </item>
        </layout>
-       <zorder>label_26</zorder>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -2184,7 +2234,7 @@ background-color: rgba(255, 255, 255,0);</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -3231,6 +3281,38 @@ background-color: rgba(255, 255, 255,0);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>AddtoShopCart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>351</x>
+     <y>637</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>601</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>SendOderInfo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>343</x>
+     <y>626</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>626</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SendSearchKey()</slot>
@@ -3244,5 +3326,7 @@ background-color: rgba(255, 255, 255,0);</string>
   <slot>SendQuestion()</slot>
   <slot>gotoNotice()</slot>
   <slot>gotoShopCart()</slot>
+  <slot>AddtoShopCart()</slot>
+  <slot>SendOderInfo()</slot>
  </slots>
 </ui>

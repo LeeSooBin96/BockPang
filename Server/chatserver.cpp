@@ -7,7 +7,7 @@
 ChatServer::ChatServer(QObject *parent): QTcpServer(parent)
 {
     QSqlDatabase DB = QSqlDatabase::addDatabase("QSQLITE");
-    DB.setDatabaseName("/Users/IOT/Desktop/Important/Coupang_Project/Bokpang");
+    DB.setDatabaseName("/Users/HAPPYFAMILY/Documents/GitHub/Server/Bokpang");
 
     if(!DB.open())
         qDebug() << "fail Database";
