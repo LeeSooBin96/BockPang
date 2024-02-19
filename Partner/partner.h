@@ -22,6 +22,7 @@ private:
     Ui::Partner *ui;
     QTcpSocket* tcpSocket;
     QString myNum;
+    QList<QString> orderList; //주문번호 리스트
 
     void connectServer();
 

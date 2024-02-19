@@ -7,7 +7,7 @@
 ChatServer::ChatServer(QObject *parent): QTcpServer(parent)
 {
     QSqlDatabase DB = QSqlDatabase::addDatabase("QSQLITE");
-    DB.setDatabaseName("/Users/IOT/Desktop/Important/Coupang_Project/Bokpang");
+    DB.setDatabaseName("/Users/Aiot/Documents/Bokpang");
 
     if(!DB.open())
         qDebug() << "fail Database";
@@ -50,6 +50,7 @@ void ChatServer::read_MSG()
 {
     QTcpSocket* senderChat = (QTcpSocket*)sender();
     QString line = QString::fromUtf8(senderChat->readAll()).trimmed();
+    qDebug()<<"전달받은 메시지 :"<<line;
 
     if(line.size() == 1 )
     {
@@ -57,6 +58,10 @@ void ChatServer::read_MSG()
 
         int index = newchat.indexOf(senderChat);
         senderChat -> write(QString::number(index).toUtf8());
+        if(line=="D") //배달 클라이언트일때
+        {
+            Deliever.push_back(senderChat);
+        }
     }
     else if(line.split('^')[0].front() == 'Q') //고객 문의창으로
     {
@@ -140,7 +145,7 @@ void ChatServer::read_MSG()
             NICKNAME = line.split('^')[2];
 
             QSqlQuery query;
-            query.prepare("SELECT PHONE FROM USER_DATA WHERE PHONE = '"+NICKNAME+"';");
+            query.prepare("SELECT NICKNAME FROM USER_DATA WHERE NICNAME = '"+NICKNAME+"';");
             query.bindValue(":NICKNAME",NICKNAME);
             if(query.exec() && query.next())
             {
@@ -423,8 +428,8 @@ void ChatServer::read_MSG()
     }
     else if(line.split('^')[0].front() == 'P')                              // 주문 정보 저장 및 주문 번호 전송
     {
-        QSqlQuery qry1,qry2;
-        QString keyword,NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT;
+        QSqlQuery qry1;
+        QString NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT;
 
         // keyword = line.split('^')[0];
         NICKNAME = line.split('^')[1];
@@ -446,49 +451,52 @@ void ChatServer::read_MSG()
         qry1.exec();
         int ORDER_NUM = rand()%100;
 
-        qmap_orderList[QString::number(ORDER_NUM)] = senderChat;
-        line.replace(line.split('^')[0],"P^"+QString::number(ORDER_NUM).toUtf8());
-        qmap_marcketList[MARCKET_NUM]->write(line.toUtf8());
+        qmap_orderList[QString::number(ORDER_NUM)].push_back(senderChat);
+        line.replace(line.split('^')[0],"P^"+QString::number(ORDER_NUM).toUtf8()); //P+고객 클라이언트 번호->P^주문번호로
+        line.replace("^","@"); //구분자 변경
+        qmap_marcketList[MARCKET_NUM]->write(line.toUtf8()); //가게에 전송
 
     }
-    else if(line.split('^').front() == 'O')
+    else if(line.split('^')[0].front() == 'O') //주문 승인
     {
-        QSqlQuery qry1,qry2;
-        QString keyword,NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT;
-
+        QSqlQuery qry1;
         if(line.split('^')[1] == 'S')
         {
-            // keyword = line.split('^')[0];
-            // NICKNAME = line.split('^')[1];
-            // MARCKET_NUM = line.split('^')[2];
-            // EA = line.split('^')[3];
-            // MENU = line.split('^')[4];
-            // TOTAL = line.split('^')[5];
-            // PAYMENT = line.split('^')[6];
-
-            // qry1.prepare("INSERT INTO ORDER_INFO_1 (NICKNAME,MARCKET_NUM,EA,MENU,TOTAL,PAYMENT) VALUES ('"+NICKNAME+"','"+MARCKET_NUM+"','"+EA+"','"+MENU+"','"+TOTAL+"','"+PAYMENT+"');");
-            // qry2.prepare("SELECT ORDER_NUM FROM ORDER_INFO_1 WHERE NICKNAME = '"+NICKNAME+"';");
-            // qry1.bindValue(":NICKNAME",NICKNAME);
-            // qry1.bindValue(":MARCKET_NUM",MARCKET_NUM);
-            // qry1.bindValue(":EA",EA);
-            // qry1.bindValue(":MENU",MENU);
-            // qry1.bindValue(":TOTAL",TOTAL);
-            // qry1.bindValue(":PAYMENT",PAYMENT);
-            // qry1.exec();
-            // // qry2.exec();
-
             QString ORDER_NUM = line.split('^')[2];
-            // // senderChat -> write("P@"+ORDER_NUM.toUtf8());
-            qmap_orderList[ORDER_NUM] -> write("P@"+ORDER_NUM.toUtf8());
+            qmap_orderList[ORDER_NUM][0] -> write("P@"+ORDER_NUM.toUtf8());
+            qmap_orderList[ORDER_NUM].push_back(senderChat); //주문번호에 매장도 연결
+            foreach (QTcpSocket* d, Deliever) {
+                d->write("W@"+ORDER_NUM.toUtf8());
+            }
         }
         else
         {
             QString ORDER_NUM = line.split('^')[2];
-            qmap_orderList[ORDER_NUM] -> write("P@F");
+            qmap_orderList[ORDER_NUM][0] -> write("P@F");
             qry1.prepare("DELETE FROM ORER_INFO_1 WHERE ORDER_NUM = "+ORDER_NUM);
             qry1.exec();
         }
     }
+    else if(line.split('^')[0].front()=='W') //배달 수락
+    {
+        QString ORDER_NUM = line.split('^')[1];
+        if(qmap_orderList[ORDER_NUM].size()==2) //다른 배달 클라이언트 추가 안되게
+            qmap_orderList[ORDER_NUM].push_back(senderChat);
+    }
+    else if(line.split('^')[0].front()=='F') //조리 완료 혹은 배달 완료
+    {
+        if(line.split('^')[1]=="D") //배달 완료
+        {
+            QString ORDER_NUM = line.split('^')[2];
+            qmap_orderList[ORDER_NUM][0]->write("F@D@"+ORDER_NUM.toUtf8());
+        }
+        else //조리 완료
+        {
+            QString ORDER_NUM = line.split('^')[1];
+            qmap_orderList[ORDER_NUM][0]->write("F@"+ORDER_NUM.toUtf8());
+        }
+    }
+
 }
 //고객센터 문의 응답 내용 전송
 void ChatServer::send_MSG(QString nick,QString msg)

@@ -20,11 +20,11 @@ private:
     QSet<QTcpSocket *> qset_clntChatList; //소켓리스트(고객,매장,배달 구별 x 저장)
     QMap<QTcpSocket *, QString> qmap_userList; //소켓리스트(고객 소켓-닉네임 매핑)
     QMap<QString, QTcpSocket*> qmap_marcketList;//소켓리스트(매장소켓,매장번호 매핑)
-    QMap<QString, QTcpSocket*> qmap_orderList;
+    QMap<QString, QList<QTcpSocket*>> qmap_orderList; //주문번호-고객(0),매장(1),배달파트너(2) 연결
     QList<QTcpSocket*> newchat;
     QSqlDatabase* DB;
-
-
+    //수빈
+    QList<QTcpSocket*> Deliever;
     GarbageCenter* center;
 
 signals:

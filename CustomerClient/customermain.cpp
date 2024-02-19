@@ -40,6 +40,10 @@ void CustomerMain::disconnected()
 //서버로 메시지 송신
 void CustomerMain::sendServerMSG(QByteArray msg)
 {
+    if(msg.front()=='P')
+    {
+        msg.replace("P","P"+myNum.toUtf8()+"^"+Nickname.toUtf8());
+    }
     tcpSocket->write(msg);
     qDebug()<<"서버로 전송된 메시지 "<<msg;
 }
@@ -109,6 +113,14 @@ void CustomerMain::readMSG()
     else if(msg.split('@')[0]=="MO") //옵션 내용 수신
     {
         order->PrintMenuOPtion(msg.split('@'));
+    }
+    else if(msg.split('@')[0]=="P") //주문 관련 수신 메시지
+    {
+        order->ArriveResultOrder(msg.split('@')[1]);
+    }
+    else if(msg.split('@')[0]=="F") //주문 진행 사항 수신 메시지
+    {
+        order->ArriveOrderProgress(msg.split('@'));
     }
     else if(msg.split('@')[0]=="U") //로그인 관련 수신 메시지
     {

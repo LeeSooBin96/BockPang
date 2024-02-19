@@ -4,7 +4,7 @@
 Partner::Partner(QWidget *parent) : QWidget(parent) , ui(new Ui::Partner)
 {
     ui->setupUi(this);
-    connectServer();
+    // connectServer();
 }
 
 Partner::~Partner()
@@ -15,11 +15,11 @@ Partner::~Partner()
 void Partner::connectServer()
 {
     tcpSocket = new QTcpSocket(this);
-    QHostAddress server("10.10.20.111");
+    QHostAddress server("10.10.20.98");
     qint64 portNum=99999;
 
     tcpSocket->connectToHost(server,portNum);
-    tcpSocket->write("U");
+    tcpSocket->write("D");
 
     connect(tcpSocket,SIGNAL(readyRead()),this,SLOT(MSG_Read()));
     connect(tcpSocket,SIGNAL(disconnected()),this,SLOT(disconnect()));
@@ -47,27 +47,28 @@ void Partner::MSG_Read()
         myNum = msg;
         qDebug() << "GET NUM" << myNum;
     }
-    else if(msg.split('@')[0] == "D")
+    if(msg.split('@')[0]=="W") //주문 들어왔을때
     {
-
+        ui->listWidget->addItem("주문이 들어왔습니다.\n주문번호 :"+msg.split('@')[1]); //다중 정말 생각 안하고 짠 코드 나중에 수정하자
+        orderList.push_back(msg.split('@')[1]);
     }
-    else if(msg.split('@')[0] == "D")
-    {
 
-    }
 }
 void Partner::Accept()
 {
-    tcpSocket -> write("업무 시작");
-    qDebug() << "ddd";
+    qDebug()<<"업무 시작";
+    // tcpSocket -> write("업무 시작");
+    connectServer();
 }
 void Partner::Start()
 {
-    tcpSocket -> write("배달 시작");
+    int index=ui->listWidget->currentRow();
+    tcpSocket -> write("W"+myNum.toUtf8()+"^"+orderList[index].toUtf8());
     qDebug() << "sss";
 }
 void Partner::Complete()
 {
-    tcpSocket -> write("배달 완료");
+    int index=ui->listWidget->currentRow();
+    tcpSocket -> write("F"+myNum.toUtf8()+"^D^"+orderList[index].toUtf8());
     qDebug() << "aaa";
 }

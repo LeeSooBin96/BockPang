@@ -14,13 +14,13 @@
    <string>MarcketMain</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout" stretch="4,1,1">
       <item>
        <widget class="QLabel" name="label">
         <property name="styleSheet">
-         <string notr="true">border-image: url(:/resources/logo.png);</string>
+         <string notr="true">border-image: url(:/resources/bok_logo.png);</string>
         </property>
         <property name="text">
          <string/>
@@ -62,6 +62,9 @@
             <pointsize>12</pointsize>
            </font>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(42, 193, 188);
@@ -78,7 +81,163 @@ border-radius:10px;
      </layout>
     </item>
     <item>
-     <widget class="QTableWidget" name="tableWidget"/>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>10</number>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>50</number>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>NO</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ORDERNUM</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>NICK</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>MENU</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>PRICE</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>PAYWAY</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="topMargin">
+         <number>50</number>
+        </property>
+        <property name="bottomMargin">
+         <number>50</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="btnOrder_ok">
+          <property name="minimumSize">
+           <size>
+            <width>125</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(42, 193, 188);
+border-radius:10px;
+</string>
+          </property>
+          <property name="text">
+           <string>주문 승인</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnOrder_back">
+          <property name="minimumSize">
+           <size>
+            <width>125</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(42, 193, 188);
+border-radius:10px;
+</string>
+          </property>
+          <property name="text">
+           <string>승인 거절</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="minimumSize">
+           <size>
+            <width>125</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(42, 193, 188);
+border-radius:10px;
+</string>
+          </property>
+          <property name="text">
+           <string>조리 완료</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -114,8 +273,58 @@ border-radius:10px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btnOrder_ok</sender>
+   <signal>clicked()</signal>
+   <receiver>MarcketMain</receiver>
+   <slot>SendOrderAccept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>708</x>
+     <y>247</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>836</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnOrder_back</sender>
+   <signal>clicked()</signal>
+   <receiver>MarcketMain</receiver>
+   <slot>SendOrderAccept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>750</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>983</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MarcketMain</receiver>
+   <slot>SendCookFinish()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>736</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>connectServer()</slot>
+  <slot>SendOrderAccept()</slot>
+  <slot>SendCookFinish()</slot>
  </slots>
 </ui>

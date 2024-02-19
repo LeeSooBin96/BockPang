@@ -44,7 +44,7 @@
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QPushButton" name="Btn_Burger_3">
@@ -1020,7 +1020,7 @@ background-color: rgb(153, 153, 153);</string>
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -1462,7 +1462,8 @@ background-color: rgb(153, 153, 153);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
+        <string notr="true">border-image: url(:/Image/Back_2.png);
+background-color: rgba(255, 255, 255,0);</string>
        </property>
        <property name="text">
         <string/>
@@ -1483,7 +1484,7 @@ background-color: rgb(153, 153, 153);</string>
          <x>-10</x>
          <y>-1</y>
          <width>391</width>
-         <height>631</height>
+         <height>601</height>
         </rect>
        </property>
        <property name="lineWidth">
@@ -1501,7 +1502,7 @@ background-color: rgb(153, 153, 153);</string>
           <x>0</x>
           <y>0</y>
           <width>395</width>
-          <height>629</height>
+          <height>599</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="OPVlayout" stretch="0">
@@ -1681,6 +1682,53 @@ border-radius:10px;
         <string>장바구니 담기</string>
        </property>
       </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>590</y>
+         <width>351</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="3,7">
+        <item>
+         <widget class="QLabel" name="label_28">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);</string>
+          </property>
+          <property name="text">
+           <string>선택된 가격 :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblSelectedPrice">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <zorder>layoutWidget</zorder>
       <zorder>scrollArea_2</zorder>
       <zorder>Btn_Marcket_Back_4</zorder>
       <zorder>pushButton</zorder>
@@ -1903,8 +1951,30 @@ background-color: rgb(255, 255, 255);</string>
       <zorder>LWNoticelist</zorder>
       <zorder>Btn_Marcket_Back_6</zorder>
      </widget>
-     <widget class="QWidget" name="page_11">
-      <widget class="QLabel" name="label_22">
+     <widget class="QWidget" name="page_3">
+      <widget class="QLabel" name="label_29">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>510</y>
+         <width>52</width>
+         <height>79</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>요청사항</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_26">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1922,32 +1992,7 @@ border-radius:10px;
         <string/>
        </property>
       </widget>
-      <widget class="QPushButton" name="Btn_Marcket_Back_7">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_23">
+      <widget class="QLabel" name="label_30">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1966,6 +2011,127 @@ border-radius:10px
         <string/>
        </property>
       </widget>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>510</y>
+         <width>281</width>
+         <height>79</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_31">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>400</y>
+         <width>94</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>총 가격</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_32">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>450</y>
+         <width>112</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>결제 방법 선택</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="ComboBoxPayWay">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>450</y>
+         <width>111</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>카드</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>계좌이체</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>만나서 결제</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="BtnOrder">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>620</y>
+         <width>371</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);
+border-radius:10px;
+</string>
+       </property>
+       <property name="text">
+        <string>주문하기</string>
+       </property>
+      </widget>
       <widget class="QTableWidget" name="TWShoplist">
        <property name="geometry">
         <rect>
@@ -1980,6 +2146,11 @@ border-radius:10px
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">border-radius:15px;
@@ -2003,6 +2174,9 @@ background-color: rgb(255, 255, 255);</string>
        <property name="horizontalScrollMode">
         <enum>QAbstractItemView::ScrollPerPixel</enum>
        </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
        <attribute name="horizontalHeaderMinimumSectionSize">
         <number>10</number>
        </attribute>
@@ -2018,11 +2192,6 @@ background-color: rgb(255, 255, 255);</string>
        <attribute name="verticalHeaderStretchLastSection">
         <bool>false</bool>
        </attribute>
-       <row>
-        <property name="text">
-         <string>New Row</string>
-        </property>
-       </row>
        <column>
         <property name="text">
          <string>NO</string>
@@ -2057,7 +2226,32 @@ background-color: rgb(255, 255, 255);</string>
         </property>
        </column>
       </widget>
-      <widget class="Line" name="line_10">
+      <widget class="QLabel" name="lblTotalPrice">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>400</y>
+         <width>219</width>
+         <height>36</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 255, 255,0);</string>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+      <widget class="Line" name="line_11">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -2070,678 +2264,32 @@ background-color: rgb(255, 255, 255);</string>
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="Btn_Marcket_Backex">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>620</y>
-         <width>371</width>
-         <height>41</height>
+         <y>0</y>
+         <width>50</width>
+         <height>50</height>
         </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-         <bold>true</bold>
-        </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);
-border-radius:10px;
-</string>
-       </property>
-       <property name="text">
-        <string>주문하기</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>400</y>
-         <width>321</width>
-         <height>38</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="3,7">
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label_25">
-          <property name="font">
-           <font>
-            <pointsize>15</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
-          </property>
-          <property name="text">
-           <string>총 가격</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_26">
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);
+        <string notr="true">border-image: url(:/Image/Back_2.png);
 background-color: rgba(255, 255, 255,0);</string>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-       <zorder>label_26</zorder>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>500</y>
-         <width>341</width>
-         <height>81</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_17">
-        <item>
-         <widget class="QLabel" name="label_27">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
-          </property>
-          <property name="text">
-           <string>요청사항</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="textEdit">
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
-          </property>
-          <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOff</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>450</y>
-         <width>231</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_15">
-        <item>
-         <widget class="QLabel" name="label_24">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
-          </property>
-          <property name="text">
-           <string>결제 방법 선택</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="ComboBoxPayWay">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);</string>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <item>
-           <property name="text">
-            <string>카드</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>계좌이체</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>만나서 결제</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="page_3">
-      <widget class="QLabel" name="lb_Menu_name3">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>440</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>메뉴 이름</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Detail">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>120</y>
-         <width>370</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>세부 정보</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Menu2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>330</y>
-         <width>370</width>
-         <height>110</height>
-        </rect>
        </property>
        <property name="text">
         <string/>
        </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Detail4">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>590</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>세부 정보</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Menu_Back">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
+       <property name="iconSize">
+        <size>
          <width>50</width>
          <height>50</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
-       </property>
-       <property name="text">
-        <string/>
+        </size>
        </property>
        <property name="flat">
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="lb_Menu_name2">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>330</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>메뉴 이름</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Menu3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>440</y>
-         <width>370</width>
-         <height>110</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Detail3">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>480</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>세부 정보</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Photo1">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>220</y>
-         <width>95</width>
-         <height>110</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>사진</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Price1">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>300</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>가격</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Price2">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>410</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>가격</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_name4">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>550</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>메뉴 이름</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Photo2">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>330</y>
-         <width>95</width>
-         <height>110</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>사진</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Detail2">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>370</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>세부 정보</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Price3">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>520</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>가격</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Photo">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>370</width>
-         <height>120</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>사진</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Menu4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>550</y>
-         <width>370</width>
-         <height>110</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Menu_Bascket">
-       <property name="geometry">
-        <rect>
-         <x>320</x>
-         <y>0</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Baskcet.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_name1">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>220</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>메뉴 이름</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Menu1">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>220</y>
-         <width>370</width>
-         <height>110</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Photo4">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>550</y>
-         <width>95</width>
-         <height>110</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>사진</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Menu_home">
-       <property name="geometry">
-        <rect>
-         <x>265</x>
-         <y>0</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/HOME.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Detail1">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>260</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>세부 정보</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Price4">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>630</y>
-         <width>201</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>가격</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Menu_Photo3">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>440</y>
-         <width>95</width>
-         <height>110</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>사진</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <zorder>lb_Menu_Photo</zorder>
-      <zorder>lb_Menu_name3</zorder>
-      <zorder>lb_Menu_Detail</zorder>
-      <zorder>Btn_Menu2</zorder>
-      <zorder>lb_Menu_Detail4</zorder>
-      <zorder>Btn_Menu_Back</zorder>
-      <zorder>lb_Menu_name2</zorder>
-      <zorder>Btn_Menu3</zorder>
-      <zorder>lb_Menu_Detail3</zorder>
-      <zorder>lb_Menu_Photo1</zorder>
-      <zorder>lb_Menu_Price1</zorder>
-      <zorder>lb_Menu_Price2</zorder>
-      <zorder>lb_Menu_name4</zorder>
-      <zorder>lb_Menu_Photo2</zorder>
-      <zorder>lb_Menu_Detail2</zorder>
-      <zorder>lb_Menu_Price3</zorder>
-      <zorder>Btn_Menu4</zorder>
-      <zorder>Btn_Menu_Bascket</zorder>
-      <zorder>lb_Menu_name1</zorder>
-      <zorder>Btn_Menu1</zorder>
-      <zorder>lb_Menu_Photo4</zorder>
-      <zorder>Btn_Menu_home</zorder>
-      <zorder>lb_Menu_Detail1</zorder>
-      <zorder>lb_Menu_Price4</zorder>
-      <zorder>lb_Menu_Photo3</zorder>
-     </widget>
-     <widget class="QWidget" name="page_4">
-      <widget class="QPushButton" name="Btn_Detailmenu_Bascket">
-       <property name="geometry">
-        <rect>
-         <x>320</x>
-         <y>0</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Baskcet.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Detailmenu_Back">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/Back_2.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="Option_List">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>220</y>
-         <width>370</width>
-         <height>440</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text">
-         <string>옵션</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QLabel" name="lb_Detailmenu_Detail">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>120</y>
-         <width>370</width>
-         <height>100</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>세부 정보</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Btn_Detailmenu_Home">
-       <property name="geometry">
-        <rect>
-         <x>265</x>
-         <y>0</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Image/HOME.png);</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lb_Detailmenu_Photo">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>370</width>
-         <height>120</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>사진</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <zorder>lb_Detailmenu_Photo</zorder>
-      <zorder>Btn_Detailmenu_Bascket</zorder>
-      <zorder>Btn_Detailmenu_Back</zorder>
-      <zorder>Option_List</zorder>
-      <zorder>lb_Detailmenu_Detail</zorder>
-      <zorder>Btn_Detailmenu_Home</zorder>
      </widget>
     </widget>
    </item>
@@ -2832,22 +2380,6 @@ background-color: rgba(255, 255, 255,0);</string>
    </hints>
   </connection>
   <connection>
-   <sender>Btn_Detailmenu_Home</sender>
-   <signal>clicked()</signal>
-   <receiver>OrderPage</receiver>
-   <slot>gotoHome()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>301</x>
-     <y>22</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>380</x>
-     <y>22</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>Btn_Chicken_2</sender>
    <signal>clicked()</signal>
    <receiver>OrderPage</receiver>
@@ -2860,22 +2392,6 @@ background-color: rgba(255, 255, 255,0);</string>
     <hint type="destinationlabel">
      <x>-14</x>
      <y>149</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Btn_Menu_home</sender>
-   <signal>clicked()</signal>
-   <receiver>OrderPage</receiver>
-   <slot>gotoHome()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>290</x>
-     <y>24</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>294</x>
-     <y>-42</y>
     </hint>
    </hints>
   </connection>
@@ -3152,22 +2668,6 @@ background-color: rgba(255, 255, 255,0);</string>
    </hints>
   </connection>
   <connection>
-   <sender>Btn_Marcket_Back_7</sender>
-   <signal>clicked()</signal>
-   <receiver>OrderPage</receiver>
-   <slot>gotoExPage()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>17</x>
-     <y>22</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>6</x>
-     <y>-10</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>Btn_Bascket</sender>
    <signal>clicked()</signal>
    <receiver>OrderPage</receiver>
@@ -3231,6 +2731,54 @@ background-color: rgba(255, 255, 255,0);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>AddtoShopCart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>351</x>
+     <y>637</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>601</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>BtnOrder</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>SendOderInfo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>307</x>
+     <y>624</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>387</x>
+     <y>601</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Btn_Marcket_Backex</sender>
+   <signal>clicked()</signal>
+   <receiver>OrderPage</receiver>
+   <slot>SendOderInfo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-39</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SendSearchKey()</slot>
@@ -3244,5 +2792,7 @@ background-color: rgba(255, 255, 255,0);</string>
   <slot>SendQuestion()</slot>
   <slot>gotoNotice()</slot>
   <slot>gotoShopCart()</slot>
+  <slot>AddtoShopCart()</slot>
+  <slot>SendOderInfo()</slot>
  </slots>
 </ui>
